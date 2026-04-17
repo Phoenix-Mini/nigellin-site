@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg-base: #fdfcf8;
-  --color-bg-hero-start: #fdfcf8;
+  --color-bg-base: #f3f3f5;
+  --color-bg-hero-start: #f3f3f5;
   --color-bg-hero-end: #f3efe5;
   --color-card: #ffffff;
   --color-stroke: #e4d4c3;
@@ -54,7 +54,7 @@ body {
   gap: 56px;
   padding: 64px 88px 32px;
   align-items: center;
-  background: #fff;
+  background: var(--color-bg-base);
 }
 
 .hero--minimal .hero__message {
@@ -80,6 +80,7 @@ body {
 
 .hero__image-wrap {
   margin: 0;
+  background: var(--color-bg-base);
 }
 
 .hero__image {
