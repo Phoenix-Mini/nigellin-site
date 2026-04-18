@@ -29,7 +29,11 @@ export default async function Home() {
     .sort(compareEntries);
   const heroImageSrc = "/images/nigel-hero-b-v2.jpg";
   const lastGenerated = archive.generated_at
-    ? new Date(archive.generated_at).toLocaleString("en-AU", { timeZone: "Australia/Sydney" })
+    ? new Date(archive.generated_at).toLocaleDateString("en-AU", {
+        timeZone: "Australia/Sydney",
+        month: "long",
+        year: "numeric",
+      })
     : "";
 
   return (
@@ -54,7 +58,7 @@ export default async function Home() {
               height={842}
               priority
             />
-            <p className="hero__card-meta">Last updated · {lastGenerated || "pending"}</p>
+            <p className="hero__card-meta">Archive updated · {lastGenerated || "pending"}</p>
           </div>
         </section>
 
