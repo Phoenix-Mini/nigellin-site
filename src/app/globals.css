@@ -65,7 +65,27 @@ body {
 }
 
 .hero::after {
-  content: none;
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  bottom: -2px;
+  height: 168px;
+  z-index: 18;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(243, 243, 245, 1) 0%,
+    rgba(243, 243, 245, 0.995) 20%,
+    rgba(243, 243, 245, 0.97) 40%,
+    rgba(243, 243, 245, 0.88) 60%,
+    rgba(243, 243, 245, 0.68) 78%,
+    rgba(243, 243, 245, 0.2) 92%,
+    rgba(243, 243, 245, 0) 100%
+  );
+  -webkit-backdrop-filter: blur(8px) saturate(85%);
+  backdrop-filter: blur(8px) saturate(85%);
 }
 
 .hero--minimal .hero__message {
@@ -146,27 +166,7 @@ body {
 }
 
 .timeline::before {
-  content: "";
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: block;
-  height: 164px;
-  z-index: 40;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(243, 243, 245, 1) 0%,
-    rgba(243, 243, 245, 0.995) 18%,
-    rgba(243, 243, 245, 0.965) 38%,
-    rgba(243, 243, 245, 0.87) 60%,
-    rgba(243, 243, 245, 0.62) 80%,
-    rgba(243, 243, 245, 0.16) 94%,
-    rgba(243, 243, 245, 0) 100%
-  );
-  -webkit-backdrop-filter: blur(8px) saturate(85%);
-  backdrop-filter: blur(8px) saturate(85%);
+  content: none;
 }
 
 .timeline__list {
@@ -391,7 +391,9 @@ body {
   }
 
   .hero::after {
-    content: none;
+    height: 128px;
+    -webkit-backdrop-filter: blur(7px) saturate(85%);
+    backdrop-filter: blur(7px) saturate(85%);
   }
 
 
@@ -420,10 +422,7 @@ body {
   }
 
   .timeline::before {
-    height: 126px;
-    z-index: 40;
-    -webkit-backdrop-filter: blur(7px) saturate(85%);
-    backdrop-filter: blur(7px) saturate(85%);
+    content: none;
   }
 
   .timeline__card,
