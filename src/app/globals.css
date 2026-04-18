@@ -64,7 +64,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: right;
-  justify-content: center;
+  justify-content: right;
   min-height: auto;
   max-width: 42ch;
   text-align: center;
