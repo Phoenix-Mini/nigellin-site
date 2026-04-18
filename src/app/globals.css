@@ -67,11 +67,12 @@ body {
 .hero::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
   bottom: -1px;
   height: 88px;
-  z-index: 20;
+  z-index: 10;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
@@ -111,11 +112,10 @@ body {
   background: var(--color-bg-base);
 }
 
-.hero__image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+.hero__message,
+.hero__image-wrap {
+  position: relative;
+  z-index: 20;
 }
 
 @media (max-width: 1040px) {
