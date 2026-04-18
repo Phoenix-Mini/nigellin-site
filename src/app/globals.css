@@ -133,6 +133,22 @@ body {
   padding: 24px 0 200px;
 }
 
+.timeline::before {
+  content: "";
+  position: sticky;
+  top: 0;
+  display: block;
+  height: 76px;
+  z-index: 30;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-base) 0%,
+    rgba(243, 243, 245, 0.92) 34%,
+    rgba(243, 243, 245, 0) 100%
+  );
+}
+
 .timeline__list {
   list-style: none;
   margin: 0;
@@ -374,6 +390,10 @@ body {
 
   .timeline {
     padding: 20px 0 120px;
+  }
+
+  .timeline::before {
+    height: 62px;
   }
 
   .timeline__card,
