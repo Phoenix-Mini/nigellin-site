@@ -56,7 +56,7 @@ body {
   grid-template-columns: minmax(320px, 460px) minmax(520px, 1fr);
   column-gap: clamp(20px, 3vw, 42px);
   align-items: center;
-  background: var(--color-bg-base);
+  background: transparent;
   isolation: isolate;
 
   width: min(1240px, calc(100% - 40px));
