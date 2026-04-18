@@ -65,7 +65,24 @@ body {
 }
 
 .hero::after {
-  content: none;
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  bottom: -1px;
+  height: 152px;
+  z-index: 12;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(243, 243, 245, 1) 0%,
+    rgba(243, 243, 245, 0.99) 26%,
+    rgba(243, 243, 245, 0.9) 62%,
+    rgba(243, 243, 245, 0) 100%
+  );
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 .hero--minimal .hero__message {
@@ -146,31 +163,15 @@ body {
 }
 
 .timeline::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 184px;
-  z-index: 40;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(243, 243, 245, 1) 0%,
-    rgba(243, 243, 245, 0.998) 24%,
-    rgba(243, 243, 245, 0.97) 46%,
-    rgba(243, 243, 245, 0.86) 66%,
-    rgba(243, 243, 245, 0.56) 84%,
-    rgba(243, 243, 245, 0) 100%
-  );
-  -webkit-backdrop-filter: blur(7px) saturate(88%);
-  backdrop-filter: blur(7px) saturate(88%);
+  content: none;
 }
 
 .timeline__list {
   list-style: none;
   margin: 0;
   padding: 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 150px, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, black 150px, black 100%);
 }
 
 .timeline__item {
@@ -389,7 +390,9 @@ body {
   }
 
   .hero::after {
-    content: none;
+    height: 118px;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
   }
 
 
@@ -418,9 +421,12 @@ body {
   }
 
   .timeline::before {
-    height: 132px;
-    -webkit-backdrop-filter: blur(6px) saturate(88%);
-    backdrop-filter: blur(6px) saturate(88%);
+    content: none;
+  }
+
+  .timeline__list {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 120px, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black 120px, black 100%);
   }
 
   .timeline__card,
