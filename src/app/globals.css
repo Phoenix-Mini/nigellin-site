@@ -49,15 +49,36 @@ body {
 }
 
 .hero {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   display: grid;
   grid-template-columns: minmax(320px, 460px) minmax(520px, 1fr);
   column-gap: clamp(20px, 3vw, 42px);
   align-items: center;
   background: var(--color-bg-base);
+  isolation: isolate;
 
   width: min(1240px, calc(100% - 40px));
   margin: 0 auto;
   padding: clamp(30px, 4vw, 60px) 0 clamp(22px, 2vw, 36px);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 88px;
+  z-index: 20;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-base) 0%,
+    rgba(243, 243, 245, 0.94) 34%,
+    rgba(243, 243, 245, 0) 100%
+  );
 }
 
 .hero--minimal .hero__message {
@@ -130,23 +151,12 @@ body {
 
 .timeline {
   position: relative;
+  z-index: 1;
   padding: 24px 0 200px;
 }
 
 .timeline::before {
-  content: "";
-  position: sticky;
-  top: 0;
-  display: block;
-  height: 76px;
-  z-index: 30;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    var(--color-bg-base) 0%,
-    rgba(243, 243, 245, 0.92) 34%,
-    rgba(243, 243, 245, 0) 100%
-  );
+  content: none;
 }
 
 .timeline__list {
@@ -362,9 +372,16 @@ body {
 
 @media (max-width: 960px) {
   .hero {
+    position: relative;
+    top: auto;
+    z-index: auto;
     grid-template-columns: 1fr;
     padding: 24px 18px 18px;
     gap: 18px;
+  }
+
+  .hero::after {
+    height: 62px;
   }
 
 
@@ -393,7 +410,7 @@ body {
   }
 
   .timeline::before {
-    height: 62px;
+    content: none;
   }
 
   .timeline__card,
