@@ -352,8 +352,9 @@ body {
   }
 
 
-  .hero--minimal .hero__message {
-    min-height: auto;
+    .hero--minimal .hero__message {
+    align-items: flex-start;
+    text-align: left;
   }
 
   .hero--minimal .hero__message p {
