@@ -142,7 +142,7 @@ body {
 .timeline {
   position: relative;
   z-index: 1;
-  padding: 176px 0 200px;
+  padding: 24px 0 200px;
 }
 
 .timeline::before {
@@ -414,7 +414,7 @@ body {
   }
 
   .timeline {
-    padding: 124px 0 120px;
+    padding: 20px 0 120px;
   }
 
   .timeline::before {
