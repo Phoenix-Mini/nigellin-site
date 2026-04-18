@@ -216,7 +216,6 @@ body {
   font-weight: 500;
   cursor: pointer;
 }
-
 .timeline__fade {
   position: absolute;
   bottom: 0;
@@ -440,7 +439,6 @@ body {
   position: relative;
   z-index: 1;
 }
-
 .timeline__empty {
   margin: 0 auto;
   width: min(520px, 90%);

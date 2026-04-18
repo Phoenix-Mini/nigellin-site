@@ -27,6 +27,7 @@ export default async function Home() {
   const entries = (archive.entries ?? [])
     .filter((entry) => entry.visibility !== "private")
     .sort(compareEntries);
+  const heroImageSrc = "/images/nigel-hero-b-v2.jpg";
   const lastGenerated = archive.generated_at
     ? new Date(archive.generated_at).toLocaleString("en-AU", { timeZone: "Australia/Sydney" })
     : "";
@@ -38,7 +39,7 @@ export default async function Home() {
       </a>
 
       <main id="main-content">
-        <section className="hero hero--minimal" aria-labelledby="hero-title">
+        <section className="hero hero--minimal hero--b" aria-labelledby="hero-title">
           <div className="hero__message">
             <h1 id="hero-title">Nigel Lin</h1>
             <p>Notes from an ongoing life.</p>
@@ -46,7 +47,7 @@ export default async function Home() {
 
           <div className="hero__image-wrap" role="status" aria-live="polite">
             <Image
-              src="/images/nigel-hero.jpg"
+              src={heroImageSrc}
               alt="Portrait of Nigel Lin"
               className="hero__image"
               width={1264}
