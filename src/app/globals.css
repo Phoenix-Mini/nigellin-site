@@ -63,7 +63,7 @@ body {
 .hero--minimal .hero__message {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: right;
   justify-content: center;
   min-height: auto;
   max-width: 42ch;
