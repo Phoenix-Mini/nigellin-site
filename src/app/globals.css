@@ -67,7 +67,7 @@ body {
   justify-content: right;
   min-height: auto;
   max-width: 42ch;
-  text-align: center;
+  text-align: right;
 }
 
 .hero--minimal .hero__message h1 {
