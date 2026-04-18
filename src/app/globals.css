@@ -61,7 +61,7 @@ body {
 
   width: min(1240px, calc(100% - 40px));
   margin: 0 auto;
-  padding: clamp(14px, 2.2vw, 26px) 0 clamp(8px, 1.6vw, 16px);
+  padding: clamp(4px, 0.8vw, 10px) 0 clamp(8px, 1.6vw, 16px);
 }
 
 .hero::after {
@@ -127,7 +127,7 @@ body {
   .hero {
     grid-template-columns: 1fr;
     width: calc(100% - 32px);
-    padding: 22px 0 14px;
+    padding: 8px 0 14px;
     row-gap: 14px;
   }
 
