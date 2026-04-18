@@ -63,8 +63,8 @@ body {
 .hero--minimal .hero__message {
   display: flex;
   flex-direction: column;
-  align-items: right;
-  justify-content: right;
+  align-items: center;
+  justify-content: center;
   min-height: auto;
   max-width: 42ch;
   text-align: right;
@@ -74,13 +74,13 @@ body {
   font-family: var(--font-display);
   font-size: clamp(40px, 4.4vw, 54px);
   line-height: 0.98;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   margin: 0 0 14px;
 }
 
 .hero--minimal .hero__message p {
   margin: 0 0 8px;
-  font-size: clamp(14px, 1.9vw, 20px);
+  font-size: clamp(14px, 1.9vw, 18px);
   line-height: 1.34;
   color: #2a2a2a;
 }
@@ -364,7 +364,7 @@ body {
   }
 
   .hero--minimal .hero__message p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .hero__card-meta {
