@@ -75,10 +75,10 @@ body {
   z-index: 40;
   pointer-events: none;
   background: linear-gradient(
-    to bottom,
+    to top,
     rgba(243, 243, 245, 0) 0%,
-    rgba(243, 243, 245, 0.8) 40%,
-    var(--color-bg-base) 70%,
+    rgba(243, 243, 245, 0.8) 50%,
+    var(--color-bg-base) 85%,
     var(--color-bg-base) 100%
   );
   -webkit-backdrop-filter: blur(8px);
@@ -372,9 +372,7 @@ body {
 }
 
 .hero__card-meta {
-  margin-top: 12px;
-  font-size: 14px;
-  color: var(--color-text-muted);
+  display: none;
 }
 
 @media (max-width: 960px) {
@@ -392,10 +390,10 @@ body {
     height: 120px;
     z-index: 40;
     background: linear-gradient(
-      to bottom,
+      to top,
       rgba(243, 243, 245, 0) 0%,
-      rgba(243, 243, 245, 0.8) 38%,
-      var(--color-bg-base) 68%,
+      rgba(243, 243, 245, 0.8) 50%,
+      var(--color-bg-base) 85%,
       var(--color-bg-base) 100%
     );
     -webkit-backdrop-filter: blur(7px);
@@ -419,8 +417,7 @@ body {
   }
 
   .hero__card-meta {
-    margin-top: 10px;
-    font-size: 12px;
+    display: none;
   }
 
   .timeline {
