@@ -48,7 +48,15 @@ body {
   padding: 0 0 120px;
 }
 
-/* ── Hero: single banner image ── */
+/* ── Hero: single banner image ────────────────────────────────────────────
+   Layer intent:
+   - .hero background       = base hero/timeline handoff wash
+   - .hero::before          = lower-hero soft wash around metadata zone
+   - .hero::after           = primary timeline swallow band
+   - .hero__banner-img mask = image-only bottom feather
+   Current review goal: keep these layers explicit so Fred can inspect the
+   handoff without reverse-engineering which layer owns what.
+────────────────────────────────────────────────────────────────────────── */
 .hero {
   position: sticky;
   top: 0;
@@ -67,6 +75,8 @@ body {
 }
 
 .hero::before {
+  /* Lower-hero wash: keeps Archive updated inside a softened zone without
+     taking over the full timeline swallow effect. */
   content: "";
   position: absolute;
   left: 0;
@@ -87,6 +97,9 @@ body {
 }
 
 .hero::after {
+  /* Primary swallow band: timeline should disappear as it approaches the
+     lower hero boundary. No backdrop-filter here — that caused hard seams
+     in earlier iterations. */
   content: "";
   position: absolute;
   left: 0;
@@ -196,6 +209,10 @@ body {
 }
 
 .timeline__spine {
+  /* Best current desktop geometry found by isolation testing:
+     -120px performed better than -112px and -136px.
+     Remaining issue, if any, is now more likely gradient softness than gross
+     geometric misplacement. */
   position: absolute;
   top: -120px;
   bottom: 0;

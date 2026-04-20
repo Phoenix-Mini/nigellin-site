@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import type { ArchiveEntry } from "@/types/archive";
 
@@ -46,7 +45,7 @@ export function TimelineEntry({ entry, align }: { entry: ArchiveEntry; align: "l
         return <p className="entry__media-fallback">Image unavailable.</p>;
       }
       return (
-        <Image
+        <img
           src={embedUrl}
           alt={entry.title}
           className="entry__media-image"
