@@ -1,6 +1,5 @@
 import path from "node:path";
 import { promises as fs } from "node:fs";
-import Image from "next/image";
 import type { ArchiveEntry } from "@/types/archive";
 import { TimelineEntry } from "@/components/TimelineEntry";
 
@@ -27,7 +26,6 @@ export default async function Home() {
   const entries = (archive.entries ?? [])
     .filter((entry) => entry.visibility !== "private")
     .sort(compareEntries);
-  const heroImageSrc = "/images/nigel-hero-b-v2.jpg";
   const lastGenerated = archive.generated_at
     ? new Date(archive.generated_at).toLocaleDateString("en-AU", {
         timeZone: "Australia/Sydney",
@@ -43,23 +41,17 @@ export default async function Home() {
       </a>
 
       <main id="main-content">
-        <section className="hero hero--minimal hero--b" aria-labelledby="hero-title">
-          <div className="hero__message">
-            <h1 id="hero-title">Nigel Lin</h1>
-            <p>Notes from an ongoing life.</p>
-          </div>
-
-          <div className="hero__image-wrap" role="status" aria-live="polite">
-            <Image
-              src={heroImageSrc}
-              alt="Portrait of Nigel Lin"
-              className="hero__image"
-              width={1264}
-              height={842}
-              priority
+        <section className="hero hero--banner" aria-label="Nigel Lin hero banner">
+          <picture className="hero__banner-picture">
+            <source media="(max-width: 960px)" srcSet="/images/nigel-hero-mobile.jpg" />
+            <source media="(min-width: 961px)" srcSet="/images/nigel-hero-desktop.jpg" />
+            <img
+              src="/images/nigel-hero-desktop.jpg"
+              alt="Nigel Lin — Notes from an ongoing life."
+              className="hero__banner-img"
             />
-            <p className="hero__card-meta">Archive updated · {lastGenerated || "pending"}</p>
-          </div>
+          </picture>
+          <p className="hero__card-meta">Archive updated · {lastGenerated || "pending"}</p>
         </section>
 
         <section className="timeline" id="timeline" aria-label="Timeline of life archive entries">

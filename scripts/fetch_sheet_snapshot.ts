@@ -3,7 +3,8 @@ import path from "node:path";
 import { google } from "googleapis";
 
 const SHEET_ID = process.env.NIGEL_SHEET_ID || "1ZzMLyC7Z6cyb88CfP8G36_aoLYpatR6jNcxp-zMGAzw";
-const OUTPUT = process.env.NIGEL_SNAPSHOT_PATH || path.resolve(process.cwd(), "public/data/nigel-archive.json");
+const OUTPUT =
+  process.env.NIGEL_SNAPSHOT_PATH || path.resolve(process.cwd(), "public/data/nigel-archive.json");
 const TOKEN_PATH =
   process.env.GOOGLE_TOKENS_PATH ||
   path.resolve(process.env.HOME || "~", ".openclaw/creds/google-oauth-phoenix-tokens.json");
