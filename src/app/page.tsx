@@ -54,6 +54,8 @@ export default async function Home() {
           <p className="hero__card-meta">Archive updated · {lastGenerated || "pending"}</p>
         </section>
 
+        <div className="timeline-mask-window" aria-hidden />
+
         <section className="timeline" id="timeline" aria-label="Timeline of life archive entries">
           <div className="timeline__spine" aria-hidden />
           {entries.length === 0 ? (
