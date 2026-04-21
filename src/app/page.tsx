@@ -21,6 +21,12 @@ function compareEntries(a: ArchiveEntry, b: ArchiveEntry): number {
   return b.date.localeCompare(a.date);
 }
 
+function getTimelineAlign(index: number): "center" | "left" | "right" {
+  if (index === 0) return "center";
+  if (index === 1) return "right";
+  return index % 2 === 0 ? "left" : "right";
+}
+
 export default async function Home() {
   const archive = await loadArchive();
   const entries = (archive.entries ?? [])
@@ -51,7 +57,12 @@ export default async function Home() {
               className="hero__banner-img"
             />
           </picture>
-          <p className="hero__card-meta">Archive updated · {lastGenerated || "pending"}</p>
+          <div className="hero__overlay-copy">
+            <a className="hero__contact" href="mailto:niggle99@gmail.com">
+              <span>Drop me a line</span>
+            </a>
+            <p className="hero__card-meta">Archive updated · {lastGenerated || "pending"}</p>
+          </div>
         </section>
 
         <div className="timeline-mask-window" aria-hidden />
@@ -67,11 +78,16 @@ export default async function Home() {
             <ol className="timeline__list">
               {entries.map((entry, index) => (
                 <li key={entry.id} className="timeline__item">
-                  <TimelineEntry entry={entry} align={index % 2 === 0 ? "left" : "right"} />
+                  <TimelineEntry entry={entry} align={getTimelineAlign(index)} />
                 </li>
               ))}
             </ol>
           )}
+          <div className="timeline__ending" aria-hidden="true">
+            <div className="timeline__ending-break" />
+            <span className="timeline__ending-label">To be continued …</span>
+            <div className="timeline__ending-fade" />
+          </div>
           <div className="timeline__fade" aria-hidden />
         </section>
       </main>
