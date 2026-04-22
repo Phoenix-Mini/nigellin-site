@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T01:51:25.718Z",
+  "generated_at": "2026-04-22T01:54:12.279Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
   "total": 3,
   "entries": [
@@ -24,12 +24,20 @@
       "media_items": [
         {
           "type": "image",
-          "url": "https://nigellin.com/media/2026/bronte-swim/bronte-swim-full.webp",
-          "thumbnail_url": "https://nigellin.com/media/2026/bronte-swim/bronte-swim-thumb.webp",
-          "title": "Bronte Baths",
-          "caption": "First dip of the year.",
-          "alt": "Morning light over swimmers at Bronte Baths",
-          "credit": "Nigel Lin"
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/f_auto,q_auto/N2_qp9nuk",
+          "title": "I was born",
+          "caption": "6 months old",
+          "alt": "6 months old photo",
+          "credit": "Charles Lin",
+          "source_url": "https://nigellin.com/media/2026/bronte-swim/bronte-swim-full.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822043/2000D_deygcm.jpg"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822049/0529ac711778f41438f9cbbb0e31e54f_psud3v.jpg"
         }
       ],
       "visibility": "public",
