@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T04:05:21.428Z",
+  "generated_at": "2026-04-22T05:31:52.892Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
-  "total": 3,
+  "total": 6,
   "entries": [
     {
       "id": "2026-0001",
@@ -94,29 +94,86 @@
     {
       "id": "2026-0003",
       "date": "2024-07-22",
-      "category": "other",
-      "title": "Soundtrack loop",
-      "body_main": "Been looping the same three songs for 6 months.",
-      "body_reflection_short": "Loop is comfort.",
-      "body_reflection_long": "What does stasis sound like?",
-      "media_type": "spotify",
-      "media_url": "https://open.spotify.com/track/xyz",
+      "category": "life",
+      "title": "Joined Lindfield Football Club",
+      "body_main": "That was my first & and also the last soccer season. I guessed soccer isn't really my sport.",
+      "body_reflection_short": "Relection Short",
+      "body_reflection_long": "Refelction Long",
+      "media_type": "image",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835536/CIMG1879_qxgimo.jpg",
+      "media_2_type": "image",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835535/CIMG1948_p5cmku.jpg",
+      "media_2_caption": "Team",
+      "media_3_type": "image",
+      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835535/CIMG2229_r99sqz.jpg",
+      "media_3_caption": "Team",
       "media_thumbnail_url": "https://i.scdn.co/image/ab67616d0000b273example",
-      "media_alt": "Album art for a repeatedly played track",
-      "media_caption": "Looped for months",
-      "media_credit": "Spotify",
-      "media_source_url": "https://open.spotify.com/track/xyz",
+      "media_caption": "Goalie",
+      "media_credit": "Charles Lin",
       "media_items": [
         {
-          "type": "spotify",
-          "url": "https://open.spotify.com/track/xyz",
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835536/CIMG1879_qxgimo.jpg",
           "thumbnail_url": "https://i.scdn.co/image/ab67616d0000b273example",
-          "title": "Looped for months",
-          "caption": "Optional note"
+          "title": "Joined Lindfield Football Club",
+          "caption": "Goalie",
+          "credit": "Charles Lin"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835535/CIMG1948_p5cmku.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835535/CIMG1948_p5cmku.jpg",
+          "caption": "Team"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835535/CIMG2229_r99sqz.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835535/CIMG2229_r99sqz.jpg",
+          "caption": "Team"
         }
       ],
       "visibility": "public",
       "order_index": 80
+    },
+    {
+      "id": "2026-0004",
+      "date": "",
+      "category": "life",
+      "title": "",
+      "body_main": "",
+      "body_reflection_short": "",
+      "body_reflection_long": "",
+      "media_type": "none",
+      "media_url": "",
+      "visibility": "public",
+      "order_index": null
+    },
+    {
+      "id": "2026-0005",
+      "date": "",
+      "category": "life",
+      "title": "",
+      "body_main": "",
+      "body_reflection_short": "",
+      "body_reflection_long": "",
+      "media_type": "none",
+      "media_url": "",
+      "visibility": "public",
+      "order_index": null
+    },
+    {
+      "id": "2026-0006",
+      "date": "",
+      "category": "life",
+      "title": "",
+      "body_main": "",
+      "body_reflection_short": "",
+      "body_reflection_long": "",
+      "media_type": "none",
+      "media_url": "",
+      "media_3_caption": "How to publish",
+      "visibility": "public",
+      "order_index": null
     }
   ]
 }
