@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T02:51:13.240Z",
+  "generated_at": "2026-04-22T04:05:21.428Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
   "total": 3,
   "entries": [
@@ -9,15 +9,16 @@
       "category": "life",
       "title": "I was born",
       "body_main": "Mum did a great job 27 April 1999 in SAN Hospital Waroongah NSW Australia",
-      "body_reflection_short": "Felt bright and noisy",
+      "body_reflection_short": "Felt bright and noisy of this new wolrd",
       "body_reflection_long": "Couldn't remember much of this day but I am sure everyone in the family were excited about my coming",
       "media_type": "image",
       "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/f_auto,q_auto/N2_qp9nuk",
       "media_2_type": "image",
       "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822043/2000D_deygcm.jpg",
-      "media_2_caption": "Image",
+      "media_2_caption": "18 mtns old",
       "media_3_type": "image",
       "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822049/0529ac711778f41438f9cbbb0e31e54f_psud3v.jpg",
+      "media_3_caption": "sans hospital",
       "media_alt": "6 months old photo",
       "media_caption": "6 mths old",
       "media_credit": "Charles Lin",
@@ -36,12 +37,13 @@
           "type": "image",
           "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822043/2000D_deygcm.jpg",
           "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822043/2000D_deygcm.jpg",
-          "caption": "Image"
+          "caption": "18 mtns old"
         },
         {
           "type": "image",
           "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822049/0529ac711778f41438f9cbbb0e31e54f_psud3v.jpg",
-          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822049/0529ac711778f41438f9cbbb0e31e54f_psud3v.jpg"
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822049/0529ac711778f41438f9cbbb0e31e54f_psud3v.jpg",
+          "caption": "sans hospital"
         }
       ],
       "visibility": "public",
@@ -49,15 +51,44 @@
     },
     {
       "id": "2026-0002",
-      "date": "2025-12-18",
-      "category": "work",
-      "title": "Pricing marathon",
-      "body_main": "Wrapped a week of re-rating tasks.",
-      "body_reflection_short": "Brain fog, but proud.",
-      "body_reflection_long": "Need to design a rest cadence before I burn out.",
-      "media_type": "none",
-      "media_url": "",
-      "visibility": "private",
+      "date": "2004-02-15",
+      "category": "life",
+      "title": "First day of schooling",
+      "body_main": "Went to Lindfield East Plublic School",
+      "body_reflection_short": "Lots of kids",
+      "body_reflection_long": "Nigel can fill up what's your thought here.",
+      "media_type": "image",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776829448/PIC_0004A_flfint.jpg",
+      "media_2_type": "image",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776829445/PIC_0009_lao6pf.jpg",
+      "media_2_caption": "School mates",
+      "media_3_type": "image",
+      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776829446/IMG_20110913_201415_r5e88o.jpg",
+      "media_3_caption": "Long hair...",
+      "media_caption": "Grand & Mum",
+      "media_credit": "Charles Lin",
+      "media_items": [
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776829448/PIC_0004A_flfint.jpg",
+          "title": "First day of schooling",
+          "caption": "Grand & Mum",
+          "credit": "Charles Lin"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776829445/PIC_0009_lao6pf.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776829445/PIC_0009_lao6pf.jpg",
+          "caption": "School mates"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776829446/IMG_20110913_201415_r5e88o.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776829446/IMG_20110913_201415_r5e88o.jpg",
+          "caption": "Long hair..."
+        }
+      ],
+      "visibility": "public",
       "order_index": 90
     },
     {
