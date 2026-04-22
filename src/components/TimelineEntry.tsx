@@ -113,6 +113,7 @@ function inferPreviewTile(entry: ArchiveEntry): PreviewTile | null {
 function inferPreviewTileFromSlot(
   type: ArchiveMediaItem["type"] | undefined,
   url: string | undefined,
+  caption?: string,
 ): PreviewTile | null {
   if (!type || !url) return null;
 
@@ -120,13 +121,14 @@ function inferPreviewTileFromSlot(
     kind: type,
     href: url,
     label:
-      type === "youtube"
+      caption ||
+      (type === "youtube"
         ? "YouTube"
         : type === "spotify"
           ? "Spotify"
           : type === "image"
             ? "Image"
-            : "Link",
+            : "Link"),
     thumbnailUrl: type === "image" ? url : type === "youtube" ? getYouTubeThumbnailUrl(url) : undefined,
   };
 }
@@ -148,8 +150,16 @@ export function TimelineEntry({ entry, align }: { entry: ArchiveEntry; align: Ti
 
     const fallbackTile = inferPreviewTile(entry);
     const slotTiles = [
-      inferPreviewTileFromSlot(entry.media_2_type as ArchiveMediaItem["type"] | undefined, entry.media_2_url),
-      inferPreviewTileFromSlot(entry.media_3_type as ArchiveMediaItem["type"] | undefined, entry.media_3_url),
+      inferPreviewTileFromSlot(
+        entry.media_2_type as ArchiveMediaItem["type"] | undefined,
+        entry.media_2_url,
+        entry.media_2_caption,
+      ),
+      inferPreviewTileFromSlot(
+        entry.media_3_type as ArchiveMediaItem["type"] | undefined,
+        entry.media_3_url,
+        entry.media_3_caption,
+      ),
     ].filter((tile): tile is PreviewTile => Boolean(tile));
 
     const tiles =

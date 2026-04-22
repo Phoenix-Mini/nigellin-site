@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T02:19:46.250Z",
+  "generated_at": "2026-04-22T02:51:13.240Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
   "total": 3,
   "entries": [
@@ -15,10 +15,11 @@
       "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/f_auto,q_auto/N2_qp9nuk",
       "media_2_type": "image",
       "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822043/2000D_deygcm.jpg",
+      "media_2_caption": "Image",
       "media_3_type": "image",
       "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822049/0529ac711778f41438f9cbbb0e31e54f_psud3v.jpg",
       "media_alt": "6 months old photo",
-      "media_caption": "6 months old",
+      "media_caption": "6 mths old",
       "media_credit": "Charles Lin",
       "media_source_url": "https://nigellin.com/media/2026/bronte-swim/bronte-swim-full.webp",
       "media_items": [
@@ -26,7 +27,7 @@
           "type": "image",
           "url": "https://res.cloudinary.com/dyozebc0z/image/upload/f_auto,q_auto/N2_qp9nuk",
           "title": "I was born",
-          "caption": "6 months old",
+          "caption": "6 mths old",
           "alt": "6 months old photo",
           "credit": "Charles Lin",
           "source_url": "https://nigellin.com/media/2026/bronte-swim/bronte-swim-full.webp"
@@ -34,7 +35,8 @@
         {
           "type": "image",
           "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822043/2000D_deygcm.jpg",
-          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822043/2000D_deygcm.jpg"
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822043/2000D_deygcm.jpg",
+          "caption": "Image"
         },
         {
           "type": "image",

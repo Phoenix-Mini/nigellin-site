@@ -32,8 +32,26 @@ assert.match(
 
 assert.match(
   entry,
-  /function getYouTubeThumbnailUrl\(url: string\): string \| undefined \{/,
-  "TimelineEntry should define a YouTube thumbnail derivation helper.",
+  /entry\.media_2_caption/,
+  "TimelineEntry should consider media_2_caption when building preview tiles.",
+);
+
+assert.match(
+  entry,
+  /entry\.media_3_caption/,
+  "TimelineEntry should consider media_3_caption when building preview tiles.",
+);
+
+assert.match(
+  entry,
+  /caption \|\|[\s\S]*type === "image"[\s\S]*"Image"/,
+  "Slot image captions should default to 'Image' when left blank.",
+);
+
+assert.match(
+  entry,
+  /type === "spotify"[\s\S]*"Spotify"/,
+  "Slot Spotify captions should default to 'Spotify' when left blank.",
 );
 
 assert.match(

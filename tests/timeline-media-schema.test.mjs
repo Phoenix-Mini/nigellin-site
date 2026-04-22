@@ -9,8 +9,20 @@ const entry = readFileSync(path.join(root, "src/components/TimelineEntry.tsx"), 
 
 assert.match(
   parser,
-  /const RANGE = process\.env\.NIGEL_SHEET_RANGE \|\| "Sheet1!A1:U1000";/,
-  "Snapshot parser should read the expanded sheet range through column U.",
+  /const RANGE = process\.env\.NIGEL_SHEET_RANGE \|\| "Sheet1!A1:W1000";/,
+  "Snapshot parser should read the expanded sheet range through column W while leaving X+ for publish controls.",
+);
+
+assert.match(
+  parser,
+  /media_2_caption:/,
+  "Snapshot parser should materialize media_2_caption from the sheet.",
+);
+
+assert.match(
+  parser,
+  /media_3_caption:/,
+  "Snapshot parser should materialize media_3_caption from the sheet.",
 );
 
 assert.match(
@@ -153,6 +165,18 @@ assert.match(
 
 assert.match(
   types,
+  /media_2_caption\??:\s*string;/,
+  "ArchiveEntry should include media_2_caption.",
+);
+
+assert.match(
+  types,
+  /media_3_caption\??:\s*string;/,
+  "ArchiveEntry should include media_3_caption.",
+);
+
+assert.match(
+  types,
   /media_thumbnail_url\??:\s*string;/,
   "ArchiveEntry should include media_thumbnail_url.",
 );
@@ -183,8 +207,20 @@ assert.match(
 
 assert.match(
   entry,
-  /media_2_type|media_3_type/,
-  "TimelineEntry should use media_2_type and media_3_type when building preview tiles.",
+  /entry\.media_2_caption/,
+  "TimelineEntry should consider media_2_caption when building preview tiles.",
+);
+
+assert.match(
+  entry,
+  /entry\.media_3_caption/,
+  "TimelineEntry should consider media_3_caption when building preview tiles.",
+);
+
+assert.match(
+  entry,
+  /type === "image"\s*\? "Image"/,
+  "Image slot captions should default to 'Image' when left blank.",
 );
 
 assert.match(

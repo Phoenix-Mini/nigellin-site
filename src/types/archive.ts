@@ -21,8 +21,10 @@ export type ArchiveEntry = {
   media_url: string;
   media_2_type?: string;
   media_2_url?: string;
+  media_2_caption?: string;
   media_3_type?: string;
   media_3_url?: string;
+  media_3_caption?: string;
   media_thumbnail_url?: string;
   media_alt?: string;
   media_caption?: string;

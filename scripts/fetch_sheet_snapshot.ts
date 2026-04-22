@@ -10,7 +10,7 @@ const OUTPUT =
 const TOKEN_PATH =
   process.env.GOOGLE_TOKENS_PATH ||
   path.resolve(process.env.HOME || "~", ".openclaw/creds/google-oauth-phoenix-tokens.json");
-const RANGE = process.env.NIGEL_SHEET_RANGE || "Sheet1!A1:U1000";
+const RANGE = process.env.NIGEL_SHEET_RANGE || "Sheet1!A1:W1000";
 
 const ALLOWED_MEDIA_TYPES = new Set(["none", "image", "youtube", "spotify"]);
 const ALLOWED_MEDIA_SLOT_TYPES = new Set(["none", "image", "youtube", "spotify", "external"]);
@@ -40,8 +40,10 @@ type Entry = {
   media_url: string;
   media_2_type?: string;
   media_2_url?: string;
+  media_2_caption?: string;
   media_3_type?: string;
   media_3_url?: string;
+  media_3_caption?: string;
   media_thumbnail_url?: string;
   media_alt?: string;
   media_caption?: string;
@@ -132,8 +134,10 @@ function buildMediaItemsFromSlots(record: Record<string, string | number | null 
   const primaryUrl = normalizeMediaUrl(record["media_url"]);
   const secondaryType = normalizeMediaSlotType(record["media_2_type"]);
   const secondaryUrl = normalizeMediaUrl(record["media_2_url"]);
+  const secondaryCaption = asString(record["media_2_caption"]) || undefined;
   const tertiaryType = normalizeMediaSlotType(record["media_3_type"]);
   const tertiaryUrl = normalizeMediaUrl(record["media_3_url"]);
+  const tertiaryCaption = asString(record["media_3_caption"]) || undefined;
   const primaryThumbnailUrl = normalizeMediaUrl(record["media_thumbnail_url"]);
   const primaryTitle = asString(record["title"]) || undefined;
   const primaryCaption = asString(record["media_caption"]) || undefined;
@@ -161,6 +165,7 @@ function buildMediaItemsFromSlots(record: Record<string, string | number | null 
       type: secondaryType as MediaItem["type"],
       url: secondaryUrl,
       thumbnail_url: secondaryType === "image" ? secondaryUrl : undefined,
+      caption: secondaryCaption,
     });
   }
 
@@ -169,6 +174,7 @@ function buildMediaItemsFromSlots(record: Record<string, string | number | null 
       type: tertiaryType as MediaItem["type"],
       url: tertiaryUrl,
       thumbnail_url: tertiaryType === "image" ? tertiaryUrl : undefined,
+      caption: tertiaryCaption,
     });
   }
 
@@ -207,8 +213,10 @@ function normalizeRow(
     media_url: asString(record["media_url"]),
     media_2_type: normalizeMediaSlotType(record["media_2_type"]),
     media_2_url: normalizeMediaUrl(record["media_2_url"]),
+    media_2_caption: asString(record["media_2_caption"]) || undefined,
     media_3_type: normalizeMediaSlotType(record["media_3_type"]),
     media_3_url: normalizeMediaUrl(record["media_3_url"]),
+    media_3_caption: asString(record["media_3_caption"]) || undefined,
     media_thumbnail_url: asString(record["media_thumbnail_url"]) || undefined,
     media_alt: asString(record["media_alt"]) || undefined,
     media_caption: asString(record["media_caption"]) || undefined,
