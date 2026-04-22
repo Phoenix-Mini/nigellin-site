@@ -134,6 +134,12 @@ function buildMediaItemsFromSlots(record: Record<string, string | number | null 
   const secondaryUrl = normalizeMediaUrl(record["media_2_url"]);
   const tertiaryType = normalizeMediaSlotType(record["media_3_type"]);
   const tertiaryUrl = normalizeMediaUrl(record["media_3_url"]);
+  const primaryThumbnailUrl = normalizeMediaUrl(record["media_thumbnail_url"]);
+  const primaryTitle = asString(record["title"]) || undefined;
+  const primaryCaption = asString(record["media_caption"]) || undefined;
+  const primaryAlt = asString(record["media_alt"]) || undefined;
+  const primaryCredit = asString(record["media_credit"]) || undefined;
+  const primarySourceUrl = normalizeMediaUrl(record["media_source_url"]);
 
   const slots: MediaItem[] = [];
 
@@ -141,12 +147,12 @@ function buildMediaItemsFromSlots(record: Record<string, string | number | null 
     slots.push({
       type: primaryType as MediaItem["type"],
       url: primaryUrl,
-      thumbnail_url: normalizeMediaUrl(record["media_thumbnail_url"]),
-      title: asString(record["title"]) || undefined,
-      caption: asString(record["media_caption"]) || undefined,
-      alt: asString(record["media_alt"]) || undefined,
-      credit: asString(record["media_credit"]) || undefined,
-      source_url: normalizeMediaUrl(record["media_source_url"]),
+      thumbnail_url: primaryThumbnailUrl,
+      title: primaryTitle,
+      caption: primaryCaption,
+      alt: primaryAlt,
+      credit: primaryCredit,
+      source_url: primarySourceUrl,
     });
   }
 
@@ -178,7 +184,14 @@ function normalizeRow(
 
   const mediaTypeRaw = asString(record["media_type"]).toLowerCase() || "none";
   const visibilityRaw = asString(record["visibility"]).toLowerCase() || "public";
-  const mediaItems = parseMediaItems(record["media_items_json"]) || buildMediaItemsFromSlots(record);
+  const parsedMediaItems = parseMediaItems(record["media_items_json"]);
+  const slotMediaItems = buildMediaItemsFromSlots(record);
+  const secondaryType = normalizeMediaSlotType(record["media_2_type"]);
+  const secondaryUrl = normalizeMediaUrl(record["media_2_url"]);
+  const tertiaryType = normalizeMediaSlotType(record["media_3_type"]);
+  const tertiaryUrl = normalizeMediaUrl(record["media_3_url"]);
+  const hasAdditionalSlotMedia = Boolean(secondaryType && secondaryUrl) || Boolean(tertiaryType && tertiaryUrl);
+  const mediaItems = hasAdditionalSlotMedia ? slotMediaItems ?? parsedMediaItems : parsedMediaItems ?? slotMediaItems;
 
   return {
     id: asString(record["id"]),

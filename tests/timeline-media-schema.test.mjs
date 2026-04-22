@@ -80,6 +80,36 @@ assert.match(
 );
 
 assert.match(
+  parser,
+  /const hasAdditionalSlotMedia = Boolean\(secondaryType && secondaryUrl\) \|\| Boolean\(tertiaryType && tertiaryUrl\);/,
+  "Snapshot parser should detect when slot-based second or third media items are populated.",
+);
+
+assert.match(
+  parser,
+  /const mediaItems = hasAdditionalSlotMedia \? slotMediaItems \?\? parsedMediaItems : parsedMediaItems \?\? slotMediaItems;/,
+  "Snapshot parser should prefer slot-based media over stale media_items_json when additional slot media is present.",
+);
+
+assert.match(
+  parser,
+  /caption: asString\(record\["media_caption"\]\) \|\| undefined/,
+  "Snapshot parser should carry media_caption into the generated primary media item when building from slots.",
+);
+
+assert.match(
+  parser,
+  /alt: asString\(record\["media_alt"\]\) \|\| undefined/,
+  "Snapshot parser should carry media_alt into the generated primary media item when building from slots.",
+);
+
+assert.match(
+  parser,
+  /credit: asString\(record\["media_credit"\]\) \|\| undefined/,
+  "Snapshot parser should carry media_credit into the generated primary media item when building from slots.",
+);
+
+assert.match(
   types,
   /export type ArchiveMediaItem = \{/,
   "Archive types should declare a reusable ArchiveMediaItem type.",
