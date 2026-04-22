@@ -1,18 +1,33 @@
 {
-  "generated_at": "2026-04-20T06:31:17.155Z",
-  "source_sheet": "1ZzMLyC7Z6cyb88CfP8G36_aoLYpatR6jNcxp-zMGAzw",
+  "generated_at": "2026-04-22T01:19:00.911Z",
+  "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
   "total": 3,
   "entries": [
     {
       "id": "2026-0001",
       "date": "2026-01-04",
       "category": "life",
-      "title": "Morning swim with dad",
+      "title": "I was born",
       "body_main": "First dip of the year at Bronte Baths.",
       "body_reflection_short": "Water felt colder than memory.",
       "body_reflection_long": "I want to note how these repeats become a private calendar.",
       "media_type": "image",
-      "media_url": "https://example.com/photo1.jpg",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/f_auto,q_auto/N2_qp9nuk",
+      "media_alt": "Morning light over swimmers at Bronte Baths",
+      "media_caption": "First dip of the year.",
+      "media_credit": "Nigel Lin",
+      "media_source_url": "https://nigellin.com/media/2026/bronte-swim/bronte-swim-full.webp",
+      "media_items": [
+        {
+          "type": "image",
+          "url": "https://nigellin.com/media/2026/bronte-swim/bronte-swim-full.webp",
+          "thumbnail_url": "https://nigellin.com/media/2026/bronte-swim/bronte-swim-thumb.webp",
+          "title": "Bronte Baths",
+          "caption": "First dip of the year.",
+          "alt": "Morning light over swimmers at Bronte Baths",
+          "credit": "Nigel Lin"
+        }
+      ],
       "visibility": "public",
       "order_index": 100
     },
@@ -39,6 +54,20 @@
       "body_reflection_long": "What does stasis sound like?",
       "media_type": "spotify",
       "media_url": "https://open.spotify.com/track/xyz",
+      "media_thumbnail_url": "https://i.scdn.co/image/ab67616d0000b273example",
+      "media_alt": "Album art for a repeatedly played track",
+      "media_caption": "Looped for months",
+      "media_credit": "Spotify",
+      "media_source_url": "https://open.spotify.com/track/xyz",
+      "media_items": [
+        {
+          "type": "spotify",
+          "url": "https://open.spotify.com/track/xyz",
+          "thumbnail_url": "https://i.scdn.co/image/ab67616d0000b273example",
+          "title": "Looped for months",
+          "caption": "Optional note"
+        }
+      ],
       "visibility": "public",
       "order_index": 80
     }
