@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T06:24:58.401Z",
+  "generated_at": "2026-04-22T06:51:51.983Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
   "total": 6,
   "entries": [
@@ -93,7 +93,7 @@
     },
     {
       "id": "2026-0003",
-      "date": "2024-07-22",
+      "date": "2005-07-22",
       "category": "life",
       "title": "Joined Lindfield Football Club",
       "body_main": "That was my first & and also the last soccer season. I guessed soccer isn't really my sport.",
@@ -135,7 +135,7 @@
     },
     {
       "id": "2026-0004",
-      "date": "2008-10-25",
+      "date": "2006-10-25",
       "category": "life",
       "title": "My baseball journey",
       "body_main": "I played baseball for Dragon & Manly League Rep team for almost 10 years",
@@ -145,10 +145,10 @@
       "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776837793/IMG_1422_n1i3mv.jpg",
       "media_2_type": "image",
       "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838277/IMG_3011_ipr6aj.jpg",
-      "media_2_caption": "Dragon",
+      "media_2_caption": "Dragon Team",
       "media_3_type": "image",
-      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838021/U16_Asso_1_Dec_13_a31osf.jpg",
-      "media_3_caption": "Mainly",
+      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776839475/1444369495318_s7htxt.jpg",
+      "media_3_caption": "Mainly in States",
       "media_caption": "Baseball",
       "media_credit": "Charles Lin",
       "media_items": [
@@ -163,13 +163,13 @@
           "type": "image",
           "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838277/IMG_3011_ipr6aj.jpg",
           "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838277/IMG_3011_ipr6aj.jpg",
-          "caption": "Dragon"
+          "caption": "Dragon Team"
         },
         {
           "type": "image",
-          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838021/U16_Asso_1_Dec_13_a31osf.jpg",
-          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838021/U16_Asso_1_Dec_13_a31osf.jpg",
-          "caption": "Mainly"
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776839475/1444369495318_s7htxt.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776839475/1444369495318_s7htxt.jpg",
+          "caption": "Mainly in States"
         }
       ],
       "visibility": "public",
@@ -177,16 +177,43 @@
     },
     {
       "id": "2026-0005",
-      "date": "",
+      "date": "2004-09-01",
       "category": "life",
-      "title": "",
-      "body_main": "",
-      "body_reflection_short": "",
-      "body_reflection_long": "",
-      "media_type": "none",
-      "media_url": "",
+      "title": "Piano and Me",
+      "body_main": "I played piano for over 10 years till agined my LMUS diploma",
+      "body_reflection_short": "Relection Short",
+      "body_reflection_long": "Refelction Long",
+      "media_type": "image",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776840380/CIMG1434_v532ug.jpg",
+      "media_2_type": "image",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776840382/1049_e2azyh.jpg",
+      "media_2_caption": "Before Exam",
+      "media_3_type": "image",
+      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776840380/wedding_piano_vbpla8.jpg",
+      "media_3_caption": "Another Wedding",
+      "media_caption": "For Wedding",
+      "media_items": [
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776840380/CIMG1434_v532ug.jpg",
+          "title": "Piano and Me",
+          "caption": "For Wedding"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776840382/1049_e2azyh.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776840382/1049_e2azyh.jpg",
+          "caption": "Before Exam"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776840380/wedding_piano_vbpla8.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776840380/wedding_piano_vbpla8.jpg",
+          "caption": "Another Wedding"
+        }
+      ],
       "visibility": "public",
-      "order_index": null
+      "order_index": 72
     },
     {
       "id": "2026-0006",
