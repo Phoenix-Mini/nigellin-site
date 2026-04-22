@@ -56,6 +56,12 @@ assert.match(
 
 assert.match(
   css,
+  /\.entry__media-tile\s*\{[\s\S]*aspect-ratio:\s*4 \/ 3;/,
+  "Media tiles should keep a fixed 4:3 frame so one portrait image cannot stretch all sibling thumbnails.",
+);
+
+assert.match(
+  css,
   /\.entry__media-tile\.is-spotify\s*\{[\s\S]*background:/,
   "Spotify tiles without fetched thumbnails should still render with a branded visual treatment.",
 );

@@ -385,6 +385,7 @@ body {
   position: relative;
   display: grid;
   place-items: center;
+  aspect-ratio: 4 / 3;
   min-height: 74px;
   overflow: hidden;
   border-radius: 7px;
@@ -618,8 +619,21 @@ body {
   }
 
   .timeline-mask-window {
-    --timeline-mask-top: 280px;
-    --timeline-mask-height: 230px;
+    /* Samsung/One UI was showing the fixed fade band as a milky block over the
+       first card. On mobile, lower the band and remove the hard solid top so
+       the handoff stays softer across device compositors. */
+    --timeline-mask-top: 300px;
+    --timeline-mask-height: 170px;
+  }
+
+  .timeline-mask-window::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(243, 243, 245, 0.74) 0%,
+      rgba(243, 243, 245, 0.4) 36%,
+      rgba(243, 243, 245, 0.12) 72%,
+      rgba(243, 243, 245, 0) 100%
+    );
   }
 
   .timeline {
