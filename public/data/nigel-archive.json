@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T05:41:37.766Z",
+  "generated_at": "2026-04-22T06:18:06.780Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
   "total": 6,
   "entries": [
@@ -135,16 +135,45 @@
     },
     {
       "id": "2026-0004",
-      "date": "",
+      "date": "2008-10-25",
       "category": "life",
-      "title": "",
-      "body_main": "",
-      "body_reflection_short": "",
-      "body_reflection_long": "",
-      "media_type": "none",
-      "media_url": "",
+      "title": "My baseball journey",
+      "body_main": "I played baseball for Dragon & Manly League Rep team for almost 10 years",
+      "body_reflection_short": "Relection Short",
+      "body_reflection_long": "Refelction Long",
+      "media_type": "image",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776837793/IMG_1422_n1i3mv.jpg",
+      "media_2_type": "image",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838277/IMG_3011_ipr6aj.jpg",
+      "media_2_caption": "Dragon",
+      "media_3_type": "image",
+      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838021/U16_Asso_1_Dec_13_a31osf.jpg",
+      "media_3_caption": "Mainly",
+      "media_caption": "Baseball",
+      "media_credit": "Charles Lin",
+      "media_items": [
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776837793/IMG_1422_n1i3mv.jpg",
+          "title": "My baseball journey",
+          "caption": "Baseball",
+          "credit": "Charles Lin"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838277/IMG_3011_ipr6aj.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838277/IMG_3011_ipr6aj.jpg",
+          "caption": "Dragon"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838021/U16_Asso_1_Dec_13_a31osf.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776838021/U16_Asso_1_Dec_13_a31osf.jpg",
+          "caption": "Mainly"
+        }
+      ],
       "visibility": "public",
-      "order_index": null
+      "order_index": 75
     },
     {
       "id": "2026-0005",
