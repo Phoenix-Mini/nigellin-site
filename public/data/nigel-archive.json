@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T05:41:03.473Z",
+  "generated_at": "2026-04-22T05:41:37.766Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
   "total": 6,
   "entries": [
@@ -107,14 +107,12 @@
       "media_3_type": "image",
       "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835535/CIMG2229_r99sqz.jpg",
       "media_3_caption": "Team",
-      "media_thumbnail_url": "https://i.scdn.co/image/ab67616d0000b273example",
       "media_caption": "Goalie",
       "media_credit": "Charles Lin",
       "media_items": [
         {
           "type": "image",
           "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776835536/CIMG1879_qxgimo.jpg",
-          "thumbnail_url": "https://i.scdn.co/image/ab67616d0000b273example",
           "title": "Joined Lindfield Football Club",
           "caption": "Goalie",
           "credit": "Charles Lin"
