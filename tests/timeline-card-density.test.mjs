@@ -44,8 +44,8 @@ assert.match(
 
 assert.match(
   css,
-  /\.timeline__card\s*\{[\s\S]*width:\s*min\(432px, calc\(60vw - 104px\)\);/,
-  "Desktop card width should be widened to roughly 20% more than the previous 360px baseline.",
+  /\.timeline__card\s*\{[\s\S]*width:\s*min\(456px, calc\(62vw - 104px\)\);/,
+  "Desktop card width should widen beyond the previous 432px baseline without bloating the layout.",
 );
 
 assert.match(

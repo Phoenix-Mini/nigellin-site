@@ -13,7 +13,7 @@ const mobileBlock = mobileBlocks.at(-1)?.[1] ?? "";
 assert.match(
   mobileBlock,
   /\.hero__card-meta\s*\{[\s\S]*font-size:\s*14px;/,
-  "Mobile Archive updated text should keep the approved 14px size.",
+  "Mobile Archive updated text should preserve the smaller bottom-overlay scale.",
 );
 
 assert.match(
