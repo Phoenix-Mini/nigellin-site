@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T11:17:06.805Z",
+  "generated_at": "2026-04-22T11:34:37.638Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
-  "total": 13,
+  "total": 15,
   "entries": [
     {
       "id": "2026-0001",
@@ -504,8 +504,8 @@
       "media_type": "image",
       "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776856404/IMG_20190808_124505_fhrrdt.jpg",
       "media_2_type": "image",
-      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776856406/IMG_20190822_081710_aaag6a.jpg",
-      "media_2_caption": "Off to work",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776856643/Screenshot_20230412-003438_okal7s.jpg",
+      "media_2_caption": "Volleyball @EY",
       "media_3_type": "image",
       "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776856402/IMG_20190302_115559_waaehd.jpg",
       "media_3_caption": "EY Australia",
@@ -519,9 +519,9 @@
         },
         {
           "type": "image",
-          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776856406/IMG_20190822_081710_aaag6a.jpg",
-          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776856406/IMG_20190822_081710_aaag6a.jpg",
-          "caption": "Off to work"
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776856643/Screenshot_20230412-003438_okal7s.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776856643/Screenshot_20230412-003438_okal7s.jpg",
+          "caption": "Volleyball @EY"
         },
         {
           "type": "image",
@@ -532,6 +532,59 @@
       ],
       "visibility": "public",
       "order_index": 59
+    },
+    {
+      "id": "2026-0014",
+      "date": "2022-02-10",
+      "category": "study",
+      "title": "USYD",
+      "body_main": "EY Sponsorded me to study Master's degree of Digital Health & Data Science",
+      "body_reflection_short": "Relection Short",
+      "body_reflection_long": "Refelction Long",
+      "media_type": "image",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776857250/received_1185435675959138_i7tlhb.jpg",
+      "media_2_type": "image",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776857269/20230601_145808_kzoqsp.jpg",
+      "media_2_caption": "Award",
+      "media_3_type": "image",
+      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776857248/received_1095864568436465_drtdon.jpg",
+      "media_3_caption": "Dean's Prize",
+      "media_caption": "Graduation",
+      "media_items": [
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776857250/received_1185435675959138_i7tlhb.jpg",
+          "title": "USYD",
+          "caption": "Graduation"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776857269/20230601_145808_kzoqsp.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776857269/20230601_145808_kzoqsp.jpg",
+          "caption": "Award"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776857248/received_1095864568436465_drtdon.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776857248/received_1095864568436465_drtdon.jpg",
+          "caption": "Dean's Prize"
+        }
+      ],
+      "visibility": "public",
+      "order_index": 56
+    },
+    {
+      "id": "2026-0015",
+      "date": "2025-10-01",
+      "category": "work",
+      "title": "NDIA",
+      "body_main": "Work for NDIA as  Actuary/Data Scientist",
+      "body_reflection_short": "Relection Short",
+      "body_reflection_long": "Refelction Long",
+      "media_type": "image",
+      "media_url": "",
+      "visibility": "public",
+      "order_index": null
     }
   ]
 }
