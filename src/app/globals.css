@@ -394,6 +394,20 @@ body {
   text-decoration: none;
 }
 
+.entry__media-tile.is-youtube {
+  background:
+    linear-gradient(180deg, rgba(120, 19, 19, 0.12) 0%, rgba(120, 19, 19, 0.03) 100%),
+    rgba(250, 245, 239, 0.96);
+  color: #9d2f2f;
+}
+
+.entry__media-tile.is-spotify {
+  background:
+    linear-gradient(180deg, rgba(24, 97, 56, 0.12) 0%, rgba(24, 97, 56, 0.03) 100%),
+    rgba(250, 245, 239, 0.96);
+  color: #1f6a42;
+}
+
 .entry__media-tile.is-empty {
   opacity: 0.5;
   border: 1px dashed rgba(218, 198, 180, 0.72);

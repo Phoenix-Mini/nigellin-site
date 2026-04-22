@@ -29,6 +29,28 @@ function formatTimelineDate(value: string): string {
   });
 }
 
+function getYouTubeThumbnailUrl(url: string): string | undefined {
+  const text = url.trim();
+  if (!text) return undefined;
+
+  const shortMatch = text.match(/youtu\.be\/([A-Za-z0-9_-]{6,})/i);
+  if (shortMatch?.[1]) {
+    return `https://img.youtube.com/vi/${shortMatch[1]}/hqdefault.jpg`;
+  }
+
+  const watchMatch = text.match(/[?&]v=([A-Za-z0-9_-]{6,})/i);
+  if (watchMatch?.[1]) {
+    return `https://img.youtube.com/vi/${watchMatch[1]}/hqdefault.jpg`;
+  }
+
+  const embedMatch = text.match(/\/(embed|shorts)\/([A-Za-z0-9_-]{6,})/i);
+  if (embedMatch?.[2]) {
+    return `https://img.youtube.com/vi/${embedMatch[2]}/hqdefault.jpg`;
+  }
+
+  return undefined;
+}
+
 function inferPreviewTileFromMediaItem(item: ArchiveMediaItem): PreviewTile | null {
   if (!item.url) return null;
 
@@ -36,7 +58,12 @@ function inferPreviewTileFromMediaItem(item: ArchiveMediaItem): PreviewTile | nu
     kind: item.type,
     href: item.url,
     label: item.title || item.caption || (item.type === "youtube" ? "YouTube" : item.type === "spotify" ? "Spotify" : item.type === "image" ? "Image" : "Link"),
-    thumbnailUrl: item.type === "image" ? item.thumbnail_url || item.url : item.thumbnail_url,
+    thumbnailUrl:
+      item.type === "image"
+        ? item.thumbnail_url || item.url
+        : item.type === "youtube"
+          ? item.thumbnail_url || getYouTubeThumbnailUrl(item.url)
+          : item.thumbnail_url,
     alt: item.alt,
   };
 }
@@ -59,7 +86,7 @@ function inferPreviewTile(entry: ArchiveEntry): PreviewTile | null {
       kind: "youtube",
       href: entry.media_url,
       label: entry.media_caption || "YouTube",
-      thumbnailUrl: entry.media_thumbnail_url,
+      thumbnailUrl: entry.media_thumbnail_url || getYouTubeThumbnailUrl(entry.media_url),
       alt: entry.media_alt || entry.title,
     };
   }
@@ -100,7 +127,7 @@ function inferPreviewTileFromSlot(
           : type === "image"
             ? "Image"
             : "Link",
-    thumbnailUrl: type === "image" ? url : undefined,
+    thumbnailUrl: type === "image" ? url : type === "youtube" ? getYouTubeThumbnailUrl(url) : undefined,
   };
 }
 

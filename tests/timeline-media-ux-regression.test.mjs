@@ -14,14 +14,32 @@ assert.match(
 
 assert.match(
   entry,
-  /thumbnailUrl:\s*item\.type === "image" \? item\.thumbnail_url \|\| item\.url : item\.thumbnail_url/,
+  /item\.type === "image"[\s\S]*item\.thumbnail_url \|\| item\.url/,
   "Media items published as images should render thumbnails even when thumbnail_url is blank.",
 );
 
 assert.match(
   entry,
-  /thumbnailUrl:\s*type === "image" \? url : undefined/,
-  "Slot-based image tiles should use their own image URL as a thumbnail fallback.",
+  /thumbnailUrl:\s*type === "image" \? url : type === "youtube" \? getYouTubeThumbnailUrl\(url\) : undefined/,
+  "Slot-based image and YouTube tiles should auto-derive usable thumbnail fallbacks.",
+);
+
+assert.match(
+  entry,
+  /function getYouTubeThumbnailUrl\(url: string\): string \| undefined \{/,
+  "TimelineEntry should define a YouTube thumbnail derivation helper.",
+);
+
+assert.match(
+  css,
+  /\.entry__media-tile\.is-spotify\s*\{[\s\S]*background:/,
+  "Spotify tiles without fetched thumbnails should still render with a branded visual treatment.",
+);
+
+assert.match(
+  css,
+  /\.entry__media-tile\.is-youtube\s*\{[\s\S]*background:/,
+  "YouTube tiles without fetched thumbnails should still render with a branded visual treatment.",
 );
 
 assert.match(
