@@ -36,7 +36,7 @@ function inferPreviewTileFromMediaItem(item: ArchiveMediaItem): PreviewTile | nu
     kind: item.type,
     href: item.url,
     label: item.title || item.caption || (item.type === "youtube" ? "YouTube" : item.type === "spotify" ? "Spotify" : item.type === "image" ? "Image" : "Link"),
-    thumbnailUrl: item.thumbnail_url,
+    thumbnailUrl: item.type === "image" ? item.thumbnail_url || item.url : item.thumbnail_url,
     alt: item.alt,
   };
 }
@@ -100,6 +100,7 @@ function inferPreviewTileFromSlot(
           : type === "image"
             ? "Image"
             : "Link",
+    thumbnailUrl: type === "image" ? url : undefined,
   };
 }
 
@@ -135,7 +136,10 @@ export function TimelineEntry({ entry, align }: { entry: ArchiveEntry; align: Ti
   }, [entry]);
 
   return (
-    <article className={`timeline__card ${align}`} aria-labelledby={`entry-title-${entry.id}`}>
+    <article
+      className={`timeline__card ${align}${isOpen ? " is-reflection-open" : ""}`}
+      aria-labelledby={`entry-title-${entry.id}`}
+    >
       <div className="entry__meta-row">
         <p className="entry__date">{formatTimelineDate(entry.date)}</p>
         <p className="entry__tag">{entry.category}</p>

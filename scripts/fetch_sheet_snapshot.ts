@@ -160,6 +160,7 @@ function buildMediaItemsFromSlots(record: Record<string, string | number | null 
     slots.push({
       type: secondaryType as MediaItem["type"],
       url: secondaryUrl,
+      thumbnail_url: secondaryType === "image" ? secondaryUrl : undefined,
     });
   }
 
@@ -167,6 +168,7 @@ function buildMediaItemsFromSlots(record: Record<string, string | number | null 
     slots.push({
       type: tertiaryType as MediaItem["type"],
       url: tertiaryUrl,
+      thumbnail_url: tertiaryType === "image" ? tertiaryUrl : undefined,
     });
   }
 

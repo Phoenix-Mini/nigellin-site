@@ -292,6 +292,7 @@ body {
 
 .timeline__card {
   position: relative;
+  z-index: 1;
   width: min(432px, calc(60vw - 104px));
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(205, 178, 154, 0.72);
@@ -299,6 +300,12 @@ body {
   padding: 20px 20px 18px;
   margin: 14px 0;
   box-shadow: 0 12px 28px rgba(40, 30, 20, 0.06);
+}
+
+.timeline__card:hover,
+.timeline__card:focus-within,
+.timeline__card.is-reflection-open {
+  z-index: 20;
 }
 
 .timeline__card.left {
@@ -419,7 +426,7 @@ body {
 }
 
 .entry__reflection-wrap {
-  position: relative;
+  position: static;
   margin-top: 2px;
 }
 
@@ -460,22 +467,25 @@ body {
 
 .entry__reflection-popover {
   position: absolute;
-  left: 0;
-  top: calc(100% + 14px);
+  inset: 12px;
   z-index: 40;
-  width: min(320px, calc(100vw - 72px));
+  width: auto;
+  max-width: none;
   padding: 16px 18px;
   border: 1px solid rgba(205, 178, 154, 0.78);
   border-radius: 20px;
-  background: rgba(255, 252, 248, 0.97);
+  background: rgba(255, 252, 248, 0.98);
   box-shadow: 0 18px 42px rgba(40, 30, 20, 0.12);
   color: var(--color-text);
   opacity: 0;
   pointer-events: none;
+  overflow-y: auto;
   transform: translateY(6px);
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
+.entry__reflection-wrap:hover .entry__reflection-popover,
+.entry__reflection-wrap:focus-within .entry__reflection-popover,
 .entry__reflection-popover.open {
   opacity: 1;
   pointer-events: auto;

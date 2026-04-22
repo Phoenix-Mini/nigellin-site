@@ -110,6 +110,18 @@ assert.match(
 );
 
 assert.match(
+  parser,
+  /thumbnail_url:\s*secondaryType === "image" \? secondaryUrl : undefined/,
+  "Snapshot parser should auto-fill a thumbnail_url for media_2 image slots when publishing from sheet columns.",
+);
+
+assert.match(
+  parser,
+  /thumbnail_url:\s*tertiaryType === "image" \? tertiaryUrl : undefined/,
+  "Snapshot parser should auto-fill a thumbnail_url for media_3 image slots when publishing from sheet columns.",
+);
+
+assert.match(
   types,
   /export type ArchiveMediaItem = \{/,
   "Archive types should declare a reusable ArchiveMediaItem type.",
