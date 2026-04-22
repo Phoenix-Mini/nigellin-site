@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:review": "next dev --port 3099",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "snapshot": "tsx scripts/fetch_sheet_snapshot.ts"
+    "snapshot": "tsx scripts/fetch_sheet_snapshot.ts",
+    "verify:timeline": "node tests/timeline-media-schema.test.mjs && node tests/timeline-spine-visibility.test.mjs && node tests/timeline-card-alignment.test.mjs && node tests/timeline-endcap-cleanup.test.mjs && node tests/timeline-layout-phase1.test.mjs && node tests/timeline-card-density.test.mjs && node tests/timeline-media-ux-regression.test.mjs && node tests/timeline-card-polish.test.mjs && node tests/timeline-desktop-stagger.test.mjs && node tests/timeline-mobile-typography.test.mjs && node tests/timeline-visual-polish.test.mjs",
+    "verify:wrapup": "pnpm verify:timeline && pnpm lint && pnpm build"
   },
   "dependencies": {
     "googleapis": "^171.4.0",

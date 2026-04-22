@@ -13,9 +13,9 @@ pnpm install
 
 ## Develop
 ```bash
-pnpm dev
+pnpm dev:review
 ```
-The app runs at <http://localhost:3000>.
+The review server runs at <http://localhost:3099>.
 
 ## Build
 ```bash
@@ -29,6 +29,10 @@ Convert Google Sheet → JSON before deploying:
 pnpm snapshot
 ```
 Outputs to `public/data/nigel-archive.json`. The server component (`page.tsx`) reads this file directly, so rerun snapshot whenever the sheet changes.
+
+Current local review defaults:
+- `.env.local` points snapshot runs at the Nova testing sheet (`NIGEL_SHEET_ID=14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk`)
+- the parser range is `Sheet1!A1:W1000`, leaving `X:Z` free for publish controls/status
 
 ## Artifacts
 - Source: `projects/nigellin.com/site/`

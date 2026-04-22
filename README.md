@@ -29,11 +29,11 @@ A personal archive website for Nigel Lin, designed as a birthday gift experience
 1) Install dependencies
    pnpm install
 
-2) Start dev server
-   pnpm dev
+2) Start the review server used during final QA
+   pnpm dev:review
 
 3) Open
-   http://localhost:3000
+   http://localhost:3099
 
 ## Build and quality checks
 - Production build: `pnpm build`
@@ -51,7 +51,7 @@ Data is materialized into JSON via:
 Environment variables supported:
 - `GOOGLE_TOKENS_PATH` (optional; default `~/.openclaw/creds/google-oauth-phoenix-tokens.json`)
 - `NIGEL_SHEET_ID` (optional)
-- `NIGEL_SHEET_RANGE` (optional; default `Sheet1!A1:U1000`)
+- `NIGEL_SHEET_RANGE` (optional; default `Sheet1!A1:W1000` so parser data stays in A:W and publish controls remain in X:Z)
 - `NIGEL_SNAPSHOT_PATH` (optional)
 
 Fail-safe behavior:
@@ -62,16 +62,17 @@ Fail-safe behavior:
 Current parser-compatible columns:
 `id, date, category, title, body_main, body_reflection_short, body_reflection_long, media_type, media_url, visibility, order_index`
 
-Expanded authoring schema now also reserves:
-`media_2_type, media_2_url, media_3_type, media_3_url, media_thumbnail_url, media_alt, media_caption, media_credit, media_source_url, media_items_json`
+Current expanded authoring columns in the testing sheet:
+`media_2_type, media_2_url, media_3_type, media_3_url, media_thumbnail_url, media_alt, media_caption, media_credit, media_source_url, media_items_json, media_2_caption, media_3_caption`
 
 Important:
 - the live parser remains backward-compatible around the original 11 fields
 - the preferred human-editable multi-media authoring path is now slot-based:
   - primary item: `media_type` + `media_url`
-  - second item: `media_2_type` + `media_2_url`
-  - third item: `media_3_type` + `media_3_url`
+  - second item: `media_2_type` + `media_2_url` + optional `media_2_caption`
+  - third item: `media_3_type` + `media_3_url` + optional `media_3_caption`
 - `media_items_json` remains supported as a backward-compatible advanced/fallback path
+- testing sheet publish controls live in `X:Z`; keep parser data in `A:W`
 - the expanded media fields are documented in:
   - `../README_sheet.md`
   - `../CONTENT_MEDIA_SCHEMA.md`
