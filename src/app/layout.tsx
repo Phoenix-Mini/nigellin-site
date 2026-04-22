@@ -16,6 +16,14 @@ export const metadata: Metadata = {
   title: "Nigel Lin — Life Archive",
   description:
     "A quiet, long-term archive of Nigel Lin's life — moments, reflections, and media that age well.",
+  icons: {
+    icon: [
+      { url: "/favicon-NL.svg", type: "image/svg+xml" },
+      { url: "/favicon-NL.png", type: "image/png", sizes: "230x230" },
+    ],
+    shortcut: "/favicon-NL.png",
+    apple: "/favicon-NL.png",
+  },
   openGraph: {
     title: "Nigel Lin — Life Archive",
     description:
