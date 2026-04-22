@@ -57,7 +57,7 @@ assert.match(
 
 assert.match(
   entry,
-  /className={`timeline__card \$\{align\}`}/,
+  /className={`timeline__card \$\{align\}(?:\$\{isOpen \? " is-reflection-open" : ""\})?`}/,
   "TimelineEntry card class should continue reflecting left/right/center alignment.",
 );
 

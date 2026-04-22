@@ -272,6 +272,16 @@ body {
   padding: 0;
 }
 
+@media (min-width: 961px) {
+  .timeline__item:nth-child(n + 3) {
+    margin-top: -104px;
+  }
+
+  .timeline__item:nth-child(3) .timeline__card.left {
+    margin-top: -52px;
+  }
+}
+
 .timeline__spine {
   position: absolute;
   top: -120px;
