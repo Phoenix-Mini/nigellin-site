@@ -57,7 +57,7 @@ function inferPreviewTileFromMediaItem(item: ArchiveMediaItem): PreviewTile | nu
   return {
     kind: item.type,
     href: item.url,
-    label: item.title || item.caption || (item.type === "youtube" ? "YouTube" : item.type === "spotify" ? "Spotify" : item.type === "image" ? "Image" : "Link"),
+    label: item.caption || item.title || (item.type === "youtube" ? "YouTube" : item.type === "spotify" ? "Spotify" : item.type === "image" ? "Image" : "Link"),
     thumbnailUrl:
       item.type === "image"
         ? item.thumbnail_url || item.url

@@ -20,6 +20,12 @@ assert.match(
 
 assert.match(
   entry,
+  /label:\s*item\.caption \|\| item\.title \|\|/,
+  "Media item preview labels should prefer caption over title so media_caption is visible on cards.",
+);
+
+assert.match(
+  entry,
   /thumbnailUrl:\s*type === "image" \? url : type === "youtube" \? getYouTubeThumbnailUrl\(url\) : undefined/,
   "Slot-based image and YouTube tiles should auto-derive usable thumbnail fallbacks.",
 );
