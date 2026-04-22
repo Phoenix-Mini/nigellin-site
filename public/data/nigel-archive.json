@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T08:51:35.461Z",
+  "generated_at": "2026-04-22T09:30:58.010Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
-  "total": 9,
+  "total": 10,
   "entries": [
     {
       "id": "2026-0001",
@@ -18,7 +18,7 @@
       "media_2_caption": "18 mtns old",
       "media_3_type": "image",
       "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822049/0529ac711778f41438f9cbbb0e31e54f_psud3v.jpg",
-      "media_3_caption": "sans hospital",
+      "media_3_caption": "SANS hospital",
       "media_alt": "6 months old photo",
       "media_caption": "6 mths old",
       "media_credit": "Charles Lin",
@@ -43,7 +43,7 @@
           "type": "image",
           "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822049/0529ac711778f41438f9cbbb0e31e54f_psud3v.jpg",
           "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776822049/0529ac711778f41438f9cbbb0e31e54f_psud3v.jpg",
-          "caption": "sans hospital"
+          "caption": "SANS hospital"
         }
       ],
       "visibility": "public",
@@ -374,6 +374,45 @@
       ],
       "visibility": "public",
       "order_index": 65
+    },
+    {
+      "id": "2026-0010",
+      "date": "2017-03-20",
+      "category": "life",
+      "title": "Encore",
+      "body_main": "I was part of Encore 2016 to perform Piano solo in Sydney Opera House",
+      "body_reflection_short": "Relection Short",
+      "body_reflection_long": "Refelction Long",
+      "media_type": "image",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776849984/FB_IMG_1490014626389_1_dqhk2v.jpg",
+      "media_2_type": "image",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776849986/FB_IMG_1490016935658_evcn6p.jpg",
+      "media_2_caption": "My music teachers",
+      "media_3_type": "spotify",
+      "media_3_url": "https://open.spotify.com/track/6zCg9XQo6HIkbUz1RDowoi",
+      "media_3_caption": "Listen in Spotify",
+      "media_caption": "Opera House",
+      "media_items": [
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776849984/FB_IMG_1490014626389_1_dqhk2v.jpg",
+          "title": "Encore",
+          "caption": "Opera House"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776849986/FB_IMG_1490016935658_evcn6p.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776849986/FB_IMG_1490016935658_evcn6p.jpg",
+          "caption": "My music teachers"
+        },
+        {
+          "type": "spotify",
+          "url": "https://open.spotify.com/track/6zCg9XQo6HIkbUz1RDowoi",
+          "caption": "Listen in Spotify"
+        }
+      ],
+      "visibility": "public",
+      "order_index": 63
     }
   ]
 }
