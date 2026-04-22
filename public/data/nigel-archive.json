@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T07:54:10.434Z",
+  "generated_at": "2026-04-22T08:19:08.026Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
   "total": 12,
   "entries": [
@@ -297,16 +297,43 @@
     },
     {
       "id": "2026-0008",
-      "date": "",
+      "date": "2011-07-01",
       "category": "life",
-      "title": "",
-      "body_main": "",
-      "body_reflection_short": "",
-      "body_reflection_long": "",
-      "media_type": "none",
-      "media_url": "",
+      "title": "Snow Trips",
+      "body_main": "Snowboarding becomes one of my favourite sport during winter",
+      "body_reflection_short": "Relection Short",
+      "body_reflection_long": "Refelction Long",
+      "media_type": "image",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776845478/1443785164786_xamjjk.jpg",
+      "media_2_type": "image",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776845481/P1000336_htxcj7.jpg",
+      "media_2_caption": "Try snowboarding",
+      "media_3_type": "image",
+      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776845478/Snow_kc39q4.jpg",
+      "media_3_caption": "Coronet Peak NZ",
+      "media_caption": "First snow trip",
+      "media_items": [
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776845478/1443785164786_xamjjk.jpg",
+          "title": "Snow Trips",
+          "caption": "First snow trip"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776845481/P1000336_htxcj7.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776845481/P1000336_htxcj7.jpg",
+          "caption": "Try snowboarding"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776845478/Snow_kc39q4.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776845478/Snow_kc39q4.jpg",
+          "caption": "Coronet Peak NZ"
+        }
+      ],
       "visibility": "public",
-      "order_index": null
+      "order_index": 66
     },
     {
       "id": "2026-0009",
