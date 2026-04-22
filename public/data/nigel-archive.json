@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T10:32:06.099Z",
+  "generated_at": "2026-04-22T11:00:04.568Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
-  "total": 10,
+  "total": 12,
   "entries": [
     {
       "id": "2026-0001",
@@ -52,7 +52,7 @@
     {
       "id": "2026-0002",
       "date": "2004-02-15",
-      "category": "life",
+      "category": "study",
       "title": "First day of schooling",
       "body_main": "Went to Lindfield East Public School",
       "body_reflection_short": "Lots of kids",
@@ -257,7 +257,7 @@
     {
       "id": "2026-0007",
       "date": "2009-02-15",
-      "category": "life",
+      "category": "study",
       "title": "Artarmon Public School",
       "body_main": "I transffered to their opportunity class from year 5 studied there for 2 years",
       "body_reflection_short": "Relection Short",
@@ -337,7 +337,7 @@
     {
       "id": "2026-0009",
       "date": "2010-02-15",
-      "category": "life",
+      "category": "study",
       "title": "North Sydney Boys High",
       "body_main": "Went to North Sydney Boys High School and studied there for 6 years",
       "body_reflection_short": "Relection Short",
@@ -412,6 +412,59 @@
       ],
       "visibility": "public",
       "order_index": 63
+    },
+    {
+      "id": "2026-0011",
+      "date": "2017-02-15",
+      "category": "study",
+      "title": "UNSW",
+      "body_main": "I studied Actuary Co-Op bechelor's degree between 2017-2020",
+      "body_reflection_short": "Relection Short",
+      "body_reflection_long": "Refelction Long",
+      "media_type": "image",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776855321/IMG_20210510_163305_k3dkpq.jpg",
+      "media_2_type": "image",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776855317/FB_IMG_1567202805152_tadrhc.jpg",
+      "media_2_caption": "Volleyball",
+      "media_3_type": "image",
+      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776855317/IMG_20180428_205230_zmdiyd.jpg",
+      "media_3_caption": "19th Birthday",
+      "media_caption": "Graduation",
+      "media_items": [
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776855321/IMG_20210510_163305_k3dkpq.jpg",
+          "title": "UNSW",
+          "caption": "Graduation"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776855317/FB_IMG_1567202805152_tadrhc.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776855317/FB_IMG_1567202805152_tadrhc.jpg",
+          "caption": "Volleyball"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776855317/IMG_20180428_205230_zmdiyd.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776855317/IMG_20180428_205230_zmdiyd.jpg",
+          "caption": "19th Birthday"
+        }
+      ],
+      "visibility": "public",
+      "order_index": 61
+    },
+    {
+      "id": "2026-0012",
+      "date": "2018-08-05",
+      "category": "study",
+      "title": "Penn States University",
+      "body_main": "I was exchnage student of Actuarial Science/Economics for half year",
+      "body_reflection_short": "",
+      "body_reflection_long": "",
+      "media_type": "none",
+      "media_url": "",
+      "visibility": "public",
+      "order_index": null
     }
   ]
 }
