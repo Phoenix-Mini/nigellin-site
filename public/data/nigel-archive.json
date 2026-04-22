@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T08:19:08.026Z",
+  "generated_at": "2026-04-22T08:51:35.461Z",
   "source_sheet": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
-  "total": 12,
+  "total": 9,
   "entries": [
     {
       "id": "2026-0001",
@@ -54,7 +54,7 @@
       "date": "2004-02-15",
       "category": "life",
       "title": "First day of schooling",
-      "body_main": "Went to Lindfield East Plublic School",
+      "body_main": "Went to Lindfield East Public School",
       "body_reflection_short": "Lots of kids",
       "body_reflection_long": "Nigel can fill up what's your thought here.",
       "media_type": "image",
@@ -297,7 +297,7 @@
     },
     {
       "id": "2026-0008",
-      "date": "2011-07-01",
+      "date": "2009-07-01",
       "category": "life",
       "title": "Snow Trips",
       "body_main": "Snowboarding becomes one of my favourite sport during winter",
@@ -337,55 +337,43 @@
     },
     {
       "id": "2026-0009",
-      "date": "",
+      "date": "2010-02-15",
       "category": "life",
-      "title": "",
-      "body_main": "",
-      "body_reflection_short": "",
-      "body_reflection_long": "",
-      "media_type": "none",
-      "media_url": "",
+      "title": "North Sydney Boys High",
+      "body_main": "Went to North Sydney Boys High School and studied there for 6 years",
+      "body_reflection_short": "Relection Short",
+      "body_reflection_long": "Refelction Long",
+      "media_type": "image",
+      "media_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776847708/784_aja9uf.jpg",
+      "media_2_type": "image",
+      "media_2_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776847703/FB_IMG_1451687947755_iqayal.jpg",
+      "media_2_caption": "Euro band trip",
+      "media_3_type": "image",
+      "media_3_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776847698/FB_IMG_1442664729509_vifnfo.jpg",
+      "media_3_caption": "Year 10 Formal",
+      "media_caption": "Graduation",
+      "media_items": [
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776847708/784_aja9uf.jpg",
+          "title": "North Sydney Boys High",
+          "caption": "Graduation"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776847703/FB_IMG_1451687947755_iqayal.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776847703/FB_IMG_1451687947755_iqayal.jpg",
+          "caption": "Euro band trip"
+        },
+        {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776847698/FB_IMG_1442664729509_vifnfo.jpg",
+          "thumbnail_url": "https://res.cloudinary.com/dyozebc0z/image/upload/v1776847698/FB_IMG_1442664729509_vifnfo.jpg",
+          "caption": "Year 10 Formal"
+        }
+      ],
       "visibility": "public",
-      "order_index": null
-    },
-    {
-      "id": "2026-0010",
-      "date": "",
-      "category": "life",
-      "title": "",
-      "body_main": "",
-      "body_reflection_short": "",
-      "body_reflection_long": "",
-      "media_type": "none",
-      "media_url": "",
-      "visibility": "public",
-      "order_index": null
-    },
-    {
-      "id": "2026-0011",
-      "date": "",
-      "category": "life",
-      "title": "",
-      "body_main": "",
-      "body_reflection_short": "",
-      "body_reflection_long": "",
-      "media_type": "none",
-      "media_url": "",
-      "visibility": "public",
-      "order_index": null
-    },
-    {
-      "id": "2026-0012",
-      "date": "",
-      "category": "life",
-      "title": "",
-      "body_main": "",
-      "body_reflection_short": "",
-      "body_reflection_long": "",
-      "media_type": "none",
-      "media_url": "",
-      "visibility": "public",
-      "order_index": null
+      "order_index": 65
     }
   ]
 }
