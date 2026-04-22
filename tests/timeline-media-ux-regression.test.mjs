@@ -62,6 +62,12 @@ assert.match(
 
 assert.match(
   css,
+  /\.entry__media-caption\s*\{[\s\S]*font-size:\s*9px;[\s\S]*text-transform:\s*none;[\s\S]*white-space:\s*nowrap;/,
+  "Media captions should stay smaller, preserve original casing, and avoid wrapping over the thumbnail image.",
+);
+
+assert.match(
+  css,
   /\.entry__media-tile\.is-spotify\s*\{[\s\S]*background:/,
   "Spotify tiles without fetched thumbnails should still render with a branded visual treatment.",
 );
