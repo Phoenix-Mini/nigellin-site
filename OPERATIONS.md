@@ -4,9 +4,21 @@ This runbook is for maintaining the Nigel Life Archive site after handoff.
 
 ## 1) Update content in Google Sheet
 1. Open the Nigel Life Archive sheet.
-2. Add or edit rows using the agreed schema:
+2. Add or edit rows using the agreed schema.
+3. Core parser-compatible columns remain:
    id, date, category, title, body_main, body_reflection_short, body_reflection_long, media_type, media_url, visibility, order_index
-3. Use `visibility=private` for entries that should not appear on the public site.
+4. Expanded authoring columns now reserved for content/media linking:
+   media_2_type, media_2_url, media_3_type, media_3_url,
+   media_thumbnail_url, media_alt, media_caption, media_credit, media_source_url, media_items_json
+5. Preferred human-editable multi-media entry pattern:
+   - first item: `media_type` + `media_url`
+   - second item: `media_2_type` + `media_2_url`
+   - third item: `media_3_type` + `media_3_url`
+6. `media_items_json` remains supported for advanced/backward-compatible cases, but should not be the default workflow for non-technical editors.
+7. Use `visibility=private` for entries that should not appear on the public site.
+8. For field-by-field rules and media formatting requirements, follow:
+   - `../README_sheet.md`
+   - `../CONTENT_MEDIA_SCHEMA.md`
 
 ## 2) Refresh snapshot cache
 From project root `projects/nigellin.com/site`:

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { ArchiveEntry } from "@/types/archive";
+import type { ArchiveEntry, ArchiveMediaItem } from "@/types/archive";
 
 type TimelineAlign = "left" | "right" | "center";
 type PreviewTile = {
@@ -9,6 +9,7 @@ type PreviewTile = {
   href: string;
   label: string;
   thumbnailUrl?: string;
+  alt?: string;
 };
 
 function splitParagraphs(text: string): string[] {
@@ -28,6 +29,18 @@ function formatTimelineDate(value: string): string {
   });
 }
 
+function inferPreviewTileFromMediaItem(item: ArchiveMediaItem): PreviewTile | null {
+  if (!item.url) return null;
+
+  return {
+    kind: item.type,
+    href: item.url,
+    label: item.title || item.caption || (item.type === "youtube" ? "YouTube" : item.type === "spotify" ? "Spotify" : item.type === "image" ? "Image" : "Link"),
+    thumbnailUrl: item.thumbnail_url,
+    alt: item.alt,
+  };
+}
+
 function inferPreviewTile(entry: ArchiveEntry): PreviewTile | null {
   if (!entry.media_url || entry.media_type === "none") return null;
 
@@ -35,8 +48,9 @@ function inferPreviewTile(entry: ArchiveEntry): PreviewTile | null {
     return {
       kind: "image",
       href: entry.media_url,
-      label: entry.title,
-      thumbnailUrl: entry.media_url,
+      label: entry.media_caption || entry.title,
+      thumbnailUrl: entry.media_thumbnail_url || entry.media_url,
+      alt: entry.media_alt || entry.title,
     };
   }
 
@@ -44,7 +58,9 @@ function inferPreviewTile(entry: ArchiveEntry): PreviewTile | null {
     return {
       kind: "youtube",
       href: entry.media_url,
-      label: "YouTube",
+      label: entry.media_caption || "YouTube",
+      thumbnailUrl: entry.media_thumbnail_url,
+      alt: entry.media_alt || entry.title,
     };
   }
 
@@ -52,14 +68,38 @@ function inferPreviewTile(entry: ArchiveEntry): PreviewTile | null {
     return {
       kind: "spotify",
       href: entry.media_url,
-      label: "Spotify",
+      label: entry.media_caption || "Spotify",
+      thumbnailUrl: entry.media_thumbnail_url,
+      alt: entry.media_alt || entry.title,
     };
   }
 
   return {
     kind: "external",
     href: entry.media_url,
-    label: "Link",
+    label: entry.media_caption || "Link",
+    thumbnailUrl: entry.media_thumbnail_url,
+    alt: entry.media_alt || entry.title,
+  };
+}
+
+function inferPreviewTileFromSlot(
+  type: ArchiveMediaItem["type"] | undefined,
+  url: string | undefined,
+): PreviewTile | null {
+  if (!type || !url) return null;
+
+  return {
+    kind: type,
+    href: url,
+    label:
+      type === "youtube"
+        ? "YouTube"
+        : type === "spotify"
+          ? "Spotify"
+          : type === "image"
+            ? "Image"
+            : "Link",
   };
 }
 
@@ -71,11 +111,28 @@ export function TimelineEntry({ entry, align }: { entry: ArchiveEntry; align: Ti
     [entry.body_reflection_long],
   );
 
-  const primaryTile = useMemo(() => inferPreviewTile(entry), [entry]);
   const mediaTiles = useMemo(() => {
-    const tiles = primaryTile ? [primaryTile] : [];
-    return [...tiles, null, null].slice(0, 3);
-  }, [primaryTile]);
+    const fromItems = entry.media_items?.length
+      ? entry.media_items
+          .map((item) => inferPreviewTileFromMediaItem(item))
+          .filter((tile): tile is PreviewTile => Boolean(tile))
+      : [];
+
+    const fallbackTile = inferPreviewTile(entry);
+    const slotTiles = [
+      inferPreviewTileFromSlot(entry.media_2_type as ArchiveMediaItem["type"] | undefined, entry.media_2_url),
+      inferPreviewTileFromSlot(entry.media_3_type as ArchiveMediaItem["type"] | undefined, entry.media_3_url),
+    ].filter((tile): tile is PreviewTile => Boolean(tile));
+
+    const tiles =
+      fromItems.length > 0
+        ? fromItems
+        : fallbackTile
+          ? [fallbackTile, ...slotTiles]
+          : slotTiles;
+
+    return [...tiles.slice(0, 3), null, null, null].slice(0, 3);
+  }, [entry]);
 
   return (
     <article className={`timeline__card ${align}`} aria-labelledby={`entry-title-${entry.id}`}>
@@ -102,7 +159,7 @@ export function TimelineEntry({ entry, align }: { entry: ArchiveEntry; align: Ti
               aria-label={`${tile.label} for ${entry.title}`}
             >
               {tile.thumbnailUrl ? (
-                <img src={tile.thumbnailUrl} alt={entry.title} className="entry__media-thumb" width={160} height={96} />
+                <img src={tile.thumbnailUrl} alt={tile.alt || entry.title} className="entry__media-thumb" width={160} height={96} />
               ) : (
                 <span className="entry__media-glyph" aria-hidden="true">
                   {tile.kind === "youtube" ? "▶" : tile.kind === "spotify" ? "♫" : "↗"}

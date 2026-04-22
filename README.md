@@ -51,7 +51,7 @@ Data is materialized into JSON via:
 Environment variables supported:
 - `GOOGLE_TOKENS_PATH` (optional; default `~/.openclaw/creds/google-oauth-phoenix-tokens.json`)
 - `NIGEL_SHEET_ID` (optional)
-- `NIGEL_SHEET_RANGE` (optional; default `Sheet1!A1:K1000`)
+- `NIGEL_SHEET_RANGE` (optional; default `Sheet1!A1:U1000`)
 - `NIGEL_SNAPSHOT_PATH` (optional)
 
 Fail-safe behavior:
@@ -59,8 +59,22 @@ Fail-safe behavior:
 - If no prior snapshot exists, snapshot fails with an error.
 
 ## Content source contract
-Expected sheet columns:
+Current parser-compatible columns:
 `id, date, category, title, body_main, body_reflection_short, body_reflection_long, media_type, media_url, visibility, order_index`
+
+Expanded authoring schema now also reserves:
+`media_2_type, media_2_url, media_3_type, media_3_url, media_thumbnail_url, media_alt, media_caption, media_credit, media_source_url, media_items_json`
+
+Important:
+- the live parser remains backward-compatible around the original 11 fields
+- the preferred human-editable multi-media authoring path is now slot-based:
+  - primary item: `media_type` + `media_url`
+  - second item: `media_2_type` + `media_2_url`
+  - third item: `media_3_type` + `media_3_url`
+- `media_items_json` remains supported as a backward-compatible advanced/fallback path
+- the expanded media fields are documented in:
+  - `../README_sheet.md`
+  - `../CONTENT_MEDIA_SCHEMA.md`
 
 `visibility=private` entries are retained in JSON but filtered out in UI.
 

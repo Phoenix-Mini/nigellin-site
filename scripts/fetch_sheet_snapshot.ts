@@ -2,16 +2,31 @@ import fs from "node:fs";
 import path from "node:path";
 import { google } from "googleapis";
 
+process.loadEnvFile?.(".env.local");
+
 const SHEET_ID = process.env.NIGEL_SHEET_ID || "1ZzMLyC7Z6cyb88CfP8G36_aoLYpatR6jNcxp-zMGAzw";
 const OUTPUT =
   process.env.NIGEL_SNAPSHOT_PATH || path.resolve(process.cwd(), "public/data/nigel-archive.json");
 const TOKEN_PATH =
   process.env.GOOGLE_TOKENS_PATH ||
   path.resolve(process.env.HOME || "~", ".openclaw/creds/google-oauth-phoenix-tokens.json");
-const RANGE = process.env.NIGEL_SHEET_RANGE || "Sheet1!A1:K1000";
+const RANGE = process.env.NIGEL_SHEET_RANGE || "Sheet1!A1:U1000";
 
 const ALLOWED_MEDIA_TYPES = new Set(["none", "image", "youtube", "spotify"]);
+const ALLOWED_MEDIA_SLOT_TYPES = new Set(["none", "image", "youtube", "spotify", "external"]);
+const ALLOWED_MEDIA_ITEM_TYPES = new Set(["image", "youtube", "spotify", "external"]);
 const ALLOWED_VISIBILITY = new Set(["public", "private"]);
+
+type MediaItem = {
+  type: "image" | "youtube" | "spotify" | "external";
+  url: string;
+  thumbnail_url?: string;
+  title?: string;
+  caption?: string;
+  alt?: string;
+  credit?: string;
+  source_url?: string;
+};
 
 type Entry = {
   id: string;
@@ -23,6 +38,16 @@ type Entry = {
   body_reflection_long: string;
   media_type: string;
   media_url: string;
+  media_2_type?: string;
+  media_2_url?: string;
+  media_3_type?: string;
+  media_3_url?: string;
+  media_thumbnail_url?: string;
+  media_alt?: string;
+  media_caption?: string;
+  media_credit?: string;
+  media_source_url?: string;
+  media_items?: MediaItem[];
   visibility: "public" | "private";
   order_index: number | null;
 };
@@ -53,6 +78,95 @@ function toNumberOrNull(value: string | number | null | undefined): number | nul
   return Number.isFinite(parsed) ? parsed : null;
 }
 
+function parseMediaItems(raw: string | number | null | undefined): MediaItem[] | undefined {
+  const text = asString(raw);
+  if (!text) return undefined;
+
+  try {
+    const parsed = JSON.parse(text);
+    if (!Array.isArray(parsed)) return undefined;
+
+    const normalized = parsed
+      .map((item) => {
+        if (!item || typeof item !== "object") return null;
+
+        const record = item as Record<string, unknown>;
+        const typeRaw = asString(typeof record.type === "string" ? record.type : "").toLowerCase();
+        const url = asString(typeof record.url === "string" ? record.url : "");
+        if (!ALLOWED_MEDIA_ITEM_TYPES.has(typeRaw) || !url) return null;
+
+        return {
+          type: typeRaw as MediaItem["type"],
+          url,
+          thumbnail_url: asString(typeof record.thumbnail_url === "string" ? record.thumbnail_url : "") || undefined,
+          title: asString(typeof record.title === "string" ? record.title : "") || undefined,
+          caption: asString(typeof record.caption === "string" ? record.caption : "") || undefined,
+          alt: asString(typeof record.alt === "string" ? record.alt : "") || undefined,
+          credit: asString(typeof record.credit === "string" ? record.credit : "") || undefined,
+          source_url: asString(typeof record.source_url === "string" ? record.source_url : "") || undefined,
+        };
+      })
+      .filter((item) => item !== null)
+      .slice(0, 3);
+
+    return normalized.length > 0 ? normalized : undefined;
+  } catch (error) {
+    console.warn(`Invalid media_items_json for entry payload: ${text.slice(0, 120)}`);
+    console.warn(error);
+    return undefined;
+  }
+}
+
+function normalizeMediaSlotType(value: string | number | null | undefined): string | undefined {
+  const normalized = asString(value).toLowerCase();
+  if (!normalized || normalized === "none") return undefined;
+  return ALLOWED_MEDIA_SLOT_TYPES.has(normalized) ? normalized : undefined;
+}
+
+function normalizeMediaUrl(value: string | number | null | undefined): string | undefined {
+  return asString(value) || undefined;
+}
+
+function buildMediaItemsFromSlots(record: Record<string, string | number | null | undefined>): MediaItem[] | undefined {
+  const primaryType = normalizeMediaSlotType(record["media_type"]);
+  const primaryUrl = normalizeMediaUrl(record["media_url"]);
+  const secondaryType = normalizeMediaSlotType(record["media_2_type"]);
+  const secondaryUrl = normalizeMediaUrl(record["media_2_url"]);
+  const tertiaryType = normalizeMediaSlotType(record["media_3_type"]);
+  const tertiaryUrl = normalizeMediaUrl(record["media_3_url"]);
+
+  const slots: MediaItem[] = [];
+
+  if (primaryType && primaryUrl) {
+    slots.push({
+      type: primaryType as MediaItem["type"],
+      url: primaryUrl,
+      thumbnail_url: normalizeMediaUrl(record["media_thumbnail_url"]),
+      title: asString(record["title"]) || undefined,
+      caption: asString(record["media_caption"]) || undefined,
+      alt: asString(record["media_alt"]) || undefined,
+      credit: asString(record["media_credit"]) || undefined,
+      source_url: normalizeMediaUrl(record["media_source_url"]),
+    });
+  }
+
+  if (secondaryType && secondaryUrl) {
+    slots.push({
+      type: secondaryType as MediaItem["type"],
+      url: secondaryUrl,
+    });
+  }
+
+  if (tertiaryType && tertiaryUrl) {
+    slots.push({
+      type: tertiaryType as MediaItem["type"],
+      url: tertiaryUrl,
+    });
+  }
+
+  return slots.length > 0 ? slots : undefined;
+}
+
 function normalizeRow(
   header: string[],
   row: Array<string | number | null | undefined>,
@@ -64,6 +178,7 @@ function normalizeRow(
 
   const mediaTypeRaw = asString(record["media_type"]).toLowerCase() || "none";
   const visibilityRaw = asString(record["visibility"]).toLowerCase() || "public";
+  const mediaItems = parseMediaItems(record["media_items_json"]) || buildMediaItemsFromSlots(record);
 
   return {
     id: asString(record["id"]),
@@ -75,6 +190,16 @@ function normalizeRow(
     body_reflection_long: asString(record["body_reflection_long"]),
     media_type: ALLOWED_MEDIA_TYPES.has(mediaTypeRaw) ? mediaTypeRaw : "none",
     media_url: asString(record["media_url"]),
+    media_2_type: normalizeMediaSlotType(record["media_2_type"]),
+    media_2_url: normalizeMediaUrl(record["media_2_url"]),
+    media_3_type: normalizeMediaSlotType(record["media_3_type"]),
+    media_3_url: normalizeMediaUrl(record["media_3_url"]),
+    media_thumbnail_url: asString(record["media_thumbnail_url"]) || undefined,
+    media_alt: asString(record["media_alt"]) || undefined,
+    media_caption: asString(record["media_caption"]) || undefined,
+    media_credit: asString(record["media_credit"]) || undefined,
+    media_source_url: asString(record["media_source_url"]) || undefined,
+    media_items: mediaItems,
     visibility: (ALLOWED_VISIBILITY.has(visibilityRaw) ? visibilityRaw : "public") as
       | "public"
       | "private",
