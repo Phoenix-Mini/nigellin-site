@@ -137,7 +137,7 @@ jobs:
           echo "error_text=Workflow failed before completion" >> "$GITHUB_OUTPUT"
 
       - name: Callback Apps Script status endpoint
-        if: always() && github.event.client_payload.status_callback_url != '' && secrets.NIGELLIN_STATUS_CALLBACK_TOKEN != ''
+        if: always() && github.event.client_payload.status_callback_url != ''
         shell: bash
         env:
           CALLBACK_URL: ${{ github.event.client_payload.status_callback_url }}
@@ -151,6 +151,10 @@ jobs:
           RESULT_ERROR_TEXT: ${{ steps.result.outputs.error_text || steps.result_failure.outputs.error_text }}
         run: |
           set -euo pipefail
+          if [ -z "$CALLBACK_URL" ] || [ -z "$CALLBACK_TOKEN" ]; then
+            echo "Skipping callback: missing callback URL or token"
+            exit 0
+          fi
           python3 - <<'PY'
           import json
           import os
