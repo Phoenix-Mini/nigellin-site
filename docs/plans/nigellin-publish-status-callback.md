@@ -11,7 +11,7 @@ Preferred callback path:
 
 Reason:
 - keeps Google Sheet ownership on the Google side
-- avoids storing Google write credentials inside GitHub unless absolutely necessary
+- avoids storing direct Google write logic for status cells inside GitHub workflow code
 - keeps visible status behavior aligned with sheet-native ownership
 
 ## 2. Endpoint shape
@@ -31,23 +31,28 @@ GitHub Actions should send JSON like this:
   "commit_hash": "abc1234",
   "error": "",
   "sheet_id": "14td7VjK0DaPsn1aACAjGq4neojtX1vxwqjefYQbxRAk",
-  "sheet_tab": "Sheet1"
+  "sheet_tab": "Sheet1",
+  "callback_token": "REPLACE_ME"
 }
 ```
 
 ## 4. Authentication
 Preferred authentication:
-- shared bearer token or shared secret header
+- shared secret in the JSON body
 
-Recommended header:
-- `X-Nigellin-Callback-Token: <secret>`
+Required payload field:
+- `callback_token`
 
-Apps Script should compare that header to a Script Property value:
+Apps Script should compare that value to Script Property:
 - `NIGELLIN_STATUS_CALLBACK_TOKEN`
 
 If token mismatch:
 - reject the request
 - do not write to the sheet
+
+Why JSON body auth here:
+- Apps Script bound web apps reliably receive POST body content
+- custom headers are less convenient and less predictable in this setup
 
 ## 5. Apps Script callback responsibilities
 On valid callback:
@@ -89,6 +94,7 @@ GitHub Actions callback must include:
 - `status`
 - `sheet_id`
 - `sheet_tab`
+- `callback_token`
 
 Optional but recommended:
 - `published_at`
@@ -117,7 +123,7 @@ If callback fails after a successful publish:
 - never store callback token in visible sheet cells
 - store callback token only in Apps Script Script Properties and GitHub Secrets
 - reject GET requests for state-changing operations
-- reject callback writes without auth header
+- reject callback writes without valid `callback_token`
 
 ## 12. Verification checklist
 A callback implementation is acceptable only if:

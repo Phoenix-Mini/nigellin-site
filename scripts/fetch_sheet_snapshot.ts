@@ -11,6 +11,8 @@ const TOKEN_PATH =
   process.env.GOOGLE_TOKENS_PATH ||
   path.resolve(process.env.HOME || "~", ".openclaw/creds/google-oauth-phoenix-tokens.json");
 const RANGE = process.env.NIGEL_SHEET_RANGE || "Sheet1!A1:W1000";
+const FAIL_ON_SNAPSHOT_ERROR = process.env.NIGEL_FAIL_ON_SNAPSHOT_ERROR === "1";
+
 
 const ALLOWED_MEDIA_TYPES = new Set(["none", "image", "youtube", "spotify"]);
 const ALLOWED_MEDIA_SLOT_TYPES = new Set(["none", "image", "youtube", "spotify", "external"]);
@@ -293,12 +295,18 @@ async function main() {
     const entries = await fetchSheetEntries();
     writeSnapshot(entries);
   } catch (err) {
-    if (existingSnapshot) {
+    if (FAIL_ON_SNAPSHOT_ERROR) {
+      console.error("Snapshot refresh failed with fail-hard mode enabled.");
+      throw err;
+    }
+
+    if (existingSnapshot && !FAIL_ON_SNAPSHOT_ERROR) {
       console.warn("Snapshot refresh failed. Keeping previous snapshot file.");
       console.warn(err);
       console.log(`Fallback active: existing snapshot retained at ${OUTPUT}`);
       return;
     }
+
     throw err;
   }
 }

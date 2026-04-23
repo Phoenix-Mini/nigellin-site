@@ -8,31 +8,30 @@ Goal: list every secret/config item required to move from the current Hermes bri
 Used by:
 - GitHub Actions
 Purpose:
-- authenticate callback requests into Apps Script web app
+- authenticate callback requests into the Apps Script web app
 Owner:
 - repo maintainer / Charles
 Required for:
 - final status write-back
+Must match:
+- Apps Script Script Property `NIGELLIN_STATUS_CALLBACK_TOKEN`
 
-### `NIGELLIN_GOOGLE_TOKENS_JSON` (only if callback path is abandoned)
+### `NIGELLIN_GOOGLE_TOKENS_JSON`
 Used by:
 - GitHub Actions
 Purpose:
-- direct Google API access from GitHub Actions
+- provide the Google OAuth token JSON required for `pnpm snapshot` on the GitHub runner
 Owner:
 - Charles
 Required for:
-- only if GitHub writes to Sheets directly instead of using Apps Script callback
-Preferred status:
-- avoid if possible
-
-### `NIGELLIN_GOOGLE_CLIENT_SECRET_JSON` (only if direct Google auth is needed)
-Used by:
-- GitHub Actions
-Purpose:
-- direct Google OAuth workflow if callback path is abandoned
-Preferred status:
-- avoid if possible
+- all cloud publish runs that need fresh Sheet -> JSON snapshot generation
+Format:
+- raw JSON content copied from the working local token file
+- current source file on Hermes:
+  `~/.openclaw/creds/google-oauth-phoenix-tokens.json`
+Important:
+- this is now required for the current GitHub Actions publish workflow
+- without it, the workflow must fail instead of pretending success with stale snapshot data
 
 ## 2. Apps Script Script Properties
 
@@ -56,9 +55,11 @@ Requirement:
 Used by:
 - Apps Script
 Purpose:
-- self-reference or callback target URL for final status write-back flow
+- Apps Script web app `/exec` URL for final status write-back
 Can be blank initially:
-- yes, until web app deployment exists
+- no, not if you want the full round-trip to complete
+Setup note:
+- if callback is not deployed yet, delete the property row instead of leaving an empty value
 
 ### `NIGELLIN_STATUS_CALLBACK_TOKEN`
 Used by:
@@ -67,6 +68,8 @@ Purpose:
 - validate GitHub Actions callback requests
 Must match GitHub secret:
 - yes
+Transport detail:
+- GitHub sends this as JSON body field `callback_token`
 
 ## 3. Human-owned config facts
 
@@ -86,18 +89,21 @@ Purpose:
 Preferred:
 - Apps Script owns the GitHub dispatch token
 - GitHub Actions owns the Apps Script callback token
-- avoid giving GitHub direct Google write credentials unless strictly necessary
+- GitHub Actions temporarily receives Google token JSON only for snapshot generation
 
 ## 5. Minimum viable secret set
-To implement the preferred callback design, minimum required secrets/config are:
+To implement the current production workflow, minimum required secrets/config are:
+- GitHub secret: `NIGELLIN_GOOGLE_TOKENS_JSON`
+- GitHub secret: `NIGELLIN_STATUS_CALLBACK_TOKEN`
 - Apps Script script property: `NIGELLIN_REPO_DISPATCH_URL`
 - Apps Script script property: `NIGELLIN_REPO_DISPATCH_TOKEN`
+- Apps Script script property: `NIGELLIN_STATUS_CALLBACK_URL`
 - Apps Script script property: `NIGELLIN_STATUS_CALLBACK_TOKEN`
-- GitHub secret: `NIGELLIN_STATUS_CALLBACK_TOKEN`
 
 ## 6. Verification checklist
 Before cutover, confirm:
+- all required GitHub secrets exist
 - all required script properties exist
 - callback token matches on both sides
+- Apps Script has been deployed as a web app and the `/exec` URL is stored in script properties
 - no secrets are present in visible sheet cells
-- no unnecessary Google credentials were copied into GitHub

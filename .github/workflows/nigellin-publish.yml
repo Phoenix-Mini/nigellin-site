@@ -47,17 +47,36 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Materialize Google token JSON
+        shell: bash
+        env:
+          NIGELLIN_GOOGLE_TOKENS_JSON: ${{ secrets.NIGELLIN_GOOGLE_TOKENS_JSON }}
+        run: |
+          set -euo pipefail
+          test -n "$NIGELLIN_GOOGLE_TOKENS_JSON"
+          TOKENS_PATH="$RUNNER_TEMP/nigellin-google-tokens.json"
+          printf '%s' "$NIGELLIN_GOOGLE_TOKENS_JSON" > "$TOKENS_PATH"
+          test -s "$TOKENS_PATH"
+          echo "GOOGLE_TOKENS_PATH=$TOKENS_PATH" >> "$GITHUB_ENV"
+
       - name: Write runtime env
         shell: bash
         run: |
           set -euo pipefail
           cat > .env.local <<EOF
           NIGEL_SHEET_ID=${{ github.event.client_payload.sheet_id }}
+          GOOGLE_TOKENS_PATH=${GOOGLE_TOKENS_PATH}
+          NIGEL_FAIL_ON_SNAPSHOT_ERROR=1
           EOF
+          echo "GOOGLE_TOKENS_PATH=${GOOGLE_TOKENS_PATH}"
+          echo "NIGEL_FAIL_ON_SNAPSHOT_ERROR=1"
 
       - name: Run snapshot
         id: snapshot
         shell: bash
+        env:
+          GOOGLE_TOKENS_PATH: ${{ env.GOOGLE_TOKENS_PATH }}
+          NIGEL_FAIL_ON_SNAPSHOT_ERROR: 1
         run: |
           set -euo pipefail
           pnpm snapshot
@@ -117,8 +136,43 @@ jobs:
           echo "published_at=" >> "$GITHUB_OUTPUT"
           echo "error_text=Workflow failed before completion" >> "$GITHUB_OUTPUT"
 
-      - name: Callback placeholder
-        if: always()
+      - name: Callback Apps Script status endpoint
+        if: always() && github.event.client_payload.status_callback_url != '' && secrets.NIGELLIN_STATUS_CALLBACK_TOKEN != ''
         shell: bash
+        env:
+          CALLBACK_URL: ${{ github.event.client_payload.status_callback_url }}
+          CALLBACK_TOKEN: ${{ secrets.NIGELLIN_STATUS_CALLBACK_TOKEN }}
+          SHEET_ID: ${{ github.event.client_payload.sheet_id }}
+          SHEET_TAB: ${{ github.event.client_payload.sheet_tab }}
+          REQUEST_ID: ${{ github.event.client_payload.request_id }}
+          RESULT_STATUS: ${{ steps.result.outputs.publish_status || steps.result_failure.outputs.publish_status }}
+          RESULT_PUBLISHED_AT: ${{ steps.result.outputs.published_at || steps.result_failure.outputs.published_at }}
+          RESULT_COMMIT_HASH: ${{ steps.result.outputs.commit_hash || steps.result_failure.outputs.commit_hash }}
+          RESULT_ERROR_TEXT: ${{ steps.result.outputs.error_text || steps.result_failure.outputs.error_text }}
         run: |
-          echo "TODO: call Apps Script callback with request_id/status/commit_hash/published_at/error_text"
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          payload = {
+              'request_id': os.environ['REQUEST_ID'],
+              'status': os.environ.get('RESULT_STATUS', ''),
+              'published_at': os.environ.get('RESULT_PUBLISHED_AT', ''),
+              'commit_hash': os.environ.get('RESULT_COMMIT_HASH', ''),
+              'error': os.environ.get('RESULT_ERROR_TEXT', ''),
+              'sheet_id': os.environ['SHEET_ID'],
+              'sheet_tab': os.environ.get('SHEET_TAB', 'Sheet1'),
+              'callback_token': os.environ['CALLBACK_TOKEN'],
+          }
+          req = urllib.request.Request(
+              os.environ['CALLBACK_URL'],
+              data=json.dumps(payload).encode('utf-8'),
+              headers={'Content-Type': 'application/json'},
+              method='POST',
+          )
+          with urllib.request.urlopen(req, timeout=30) as response:
+              body = response.read().decode('utf-8', 'replace')
+              print(body)
+          PY

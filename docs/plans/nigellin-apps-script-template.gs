@@ -5,13 +5,17 @@ function onOpen() {
     .addToUi();
 }
 
+function jsonResponse(payload) {
+  return ContentService
+    .createTextOutput(JSON.stringify(payload))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
 function publishNigellinSite() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1');
   if (!sheet) throw new Error('Sheet1 not found');
 
   const STATUS_CELL = 'Z3';
-  const LAST_PUBLISHED_CELL = 'Z4';
-  const LAST_COMMIT_CELL = 'Z5';
   const LAST_ERROR_CELL = 'Z6';
 
   const scriptProps = PropertiesService.getScriptProperties();
@@ -49,9 +53,8 @@ function publishNigellinSite() {
         requested_by: requestedBy,
         request_source: 'apps_script_menu',
         request_id: requestId,
-        status_callback_mode: 'apps_script_webapp',
+        status_callback_mode: callbackUrl ? 'apps_script_webapp' : 'none',
         status_callback_url: callbackUrl,
-        status_callback_token: callbackToken,
       },
     };
 
@@ -75,8 +78,53 @@ function publishNigellinSite() {
       throw new Error('Dispatch failed: ' + code + ' ' + body);
     }
 
+    if (!callbackUrl || !callbackToken) {
+      SpreadsheetApp.getUi().alert('Publish requested. Callback is not configured yet, so final status may stay on Publishing….');
+      return;
+    }
+
     SpreadsheetApp.getUi().alert('Publish requested. Status will update in the sheet when the workflow finishes.');
   } finally {
     lock.releaseLock();
+  }
+}
+
+function doPost(e) {
+  try {
+    const scriptProps = PropertiesService.getScriptProperties();
+    const expectedToken = scriptProps.getProperty('NIGELLIN_STATUS_CALLBACK_TOKEN') || '';
+    const payload = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+    const callbackToken = String(payload.callback_token || '');
+
+    if (!expectedToken || callbackToken !== expectedToken) {
+      return jsonResponse({ ok: false, error: 'Unauthorized' });
+    }
+
+    const sheetId = String(payload.sheet_id || '');
+    const sheetTab = String(payload.sheet_tab || 'Sheet1');
+    const status = String(payload.status || 'Publish failed');
+    const publishedAt = String(payload.published_at || '');
+    const commitHash = String(payload.commit_hash || '');
+    const errorText = String(payload.error || '');
+    const requestId = String(payload.request_id || '');
+
+    if (!sheetId || !requestId || !status) {
+      return jsonResponse({ ok: false, error: 'Missing required callback fields' });
+    }
+
+    const spreadsheet = SpreadsheetApp.openById(sheetId);
+    const sheet = spreadsheet.getSheetByName(sheetTab);
+    if (!sheet) {
+      return jsonResponse({ ok: false, error: 'Sheet tab not found' });
+    }
+
+    sheet.getRange('Z3').setValue(status);
+    sheet.getRange('Z4').setValue(publishedAt);
+    sheet.getRange('Z5').setValue(commitHash);
+    sheet.getRange('Z6').setValue(errorText);
+
+    return jsonResponse({ ok: true, request_id: requestId });
+  } catch (error) {
+    return jsonResponse({ ok: false, error: String(error) });
   }
 }

@@ -1,6 +1,6 @@
 # Nigellin Dry Trigger Execution Checklist
 
-Goal: run the first safe no-content-change dry trigger for the Nigel-owned publish path and prove that the Apps Script -> GitHub Actions trigger chain works before attempting a real publish.
+Goal: run the first safe no-content-change dry trigger for the Nigel-owned publish path and prove that the Apps Script -> GitHub Actions -> Apps Script callback chain works before attempting a real publish.
 
 ## Preconditions
 - `.github/workflows/nigellin-publish.yml` is already pushed to `main`
@@ -26,6 +26,7 @@ Goal: run the first safe no-content-change dry trigger for the Nigel-owned publi
 - [ ] Extensions -> Apps Script
 - [ ] Paste `docs/plans/nigellin-apps-script-template.gs`
 - [ ] Save project
+- [ ] Deploy the script as a web app and copy the `/exec` URL
 - [ ] Set Script Properties:
   - `NIGELLIN_REPO_DISPATCH_URL`
   - `NIGELLIN_REPO_DISPATCH_TOKEN`
@@ -36,10 +37,12 @@ Goal: run the first safe no-content-change dry trigger for the Nigel-owned publi
 - [ ] Confirm menu appears:
   - `Nigellin -> Publish site`
 
-## Phase 4: Prepare GitHub secret
+## Phase 4: Prepare GitHub secrets
 - [ ] Add GitHub Actions secret:
   - `NIGELLIN_STATUS_CALLBACK_TOKEN`
-- [ ] If callback URL is not live yet, note that status write-back may remain incomplete in this first dry run
+- [ ] Add GitHub Actions secret:
+  - `NIGELLIN_GOOGLE_TOKENS_JSON`
+- [ ] Verify the Google token JSON secret was copied from the working Hermes token file
 
 ## Phase 5: Run the no-content-change dry trigger
 - [ ] Do not edit any timeline content rows
@@ -53,6 +56,7 @@ Goal: run the first safe no-content-change dry trigger for the Nigel-owned publi
 - [ ] Confirm a new workflow run starts
 - [ ] Confirm dispatch payload includes expected `sheet_id` and `request_id`
 - [ ] Confirm workflow completes without syntax/auth errors
+- [ ] Confirm snapshot step uses fresh Google token JSON and does not fall back silently
 - [ ] Confirm diff step resolves to no content changes
 - [ ] Confirm no new snapshot commit was created
 
@@ -64,7 +68,7 @@ Best-case expected final result:
 - [ ] `Z6` blank
 
 If callback is not fully live yet:
-- [ ] workflow still succeeds
+- [ ] workflow may still publish correctly
 - [ ] note that sheet may remain on `Publishing…`
 - [ ] record manual update procedure and callback gap explicitly
 
@@ -82,7 +86,7 @@ Proceed to real-content publish test only if:
 - [ ] GitHub workflow starts correctly
 - [ ] workflow completes correctly
 - [ ] no accidental content commit occurs
-- [ ] status path is understood, even if callback still needs finishing
+- [ ] sheet status round-trip works or the remaining gap is explicitly understood
 
 If dry trigger fails:
 - [ ] keep Hermes bridge as primary path
